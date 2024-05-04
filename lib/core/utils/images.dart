@@ -4,6 +4,7 @@ const sharePath = '$imgPath/share';
 const onBoardingPath = '$imgPath/ob';
 const socialPath = '$imgPath/socials';
 const settingsPath = '$imgPath/settings';
+const aboutPath = '$imgPath/about';
 
 class MainImages {
   static const String worldBg = '$imgPath/worldBg.png';
@@ -57,4 +58,15 @@ class ShareImages {
 class SettingsImages {
   static const faceId = '$settingsPath/face_id.json';
   static const fingerId = '$settingsPath/finger_id.json';
+}
+
+class AboutImages {
+  static final List<String> aboutImgs = [
+    '$aboutPath/about1.png',
+    '$aboutPath/about2.png',
+    '$aboutPath/about3.png',
+    '$aboutPath/about4.png',
+    '$aboutPath/about5.png',
+    '$aboutPath/about6.png',
+  ];
 }
