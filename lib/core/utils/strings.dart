@@ -73,16 +73,16 @@ class SettingsStrings {
   static const String pinSecurityTitle = 'PIN Security';
   static const String pinSecuritySubtitle =
       'Protect your account with a secure PIN';
-  static const String faceIdTitle = 'Touch ID Security';
-  static const String faceIdSubtitle =
+  static const String touchIdTitle = 'Touch ID Security';
+  static const String touchIdSubtitle =
       'Secure your account with your fingerprint using touch ID';
-  static const String faceIdTip =
+  static const String touchIdTip =
       'Please place your finger on the fingerprint sensor to get started';
 
-  static const String touchIdTitle = 'Face ID Security';
-  static const String touchIdSubtitle =
+  static const String faceIdTitle = 'Face ID Security';
+  static const String faceIdSubtitle =
       'Secure your account with your face using face ID';
-  static const String touchIdTip =
+  static const String faceIdTip =
       'Please position your face infront of the camera to authenticate with your face ID';
   static const String secured = '\u2713  Authentication successful';
   static const String notSecured = '\u2717  Authentication failed';

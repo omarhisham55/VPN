@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:vpn_demo/config/routes/auth_routes.dart';
 import 'package:vpn_demo/config/routes/home_routes.dart';
 import 'package:vpn_demo/config/routes/onboarding_routes.dart';
+import 'package:vpn_demo/config/routes/settings_routes.dart';
 import 'package:vpn_demo/core/utils/strings.dart';
 
 abstract class AbstractRouters {
   Map<String, Route Function(RouteSettings settings)> get allRoutes;
 }
 
-class Routes {  
+class Routes {
   Routes._();
 
   factory Routes() => Routes._();
@@ -16,6 +17,7 @@ class Routes {
         ...OnBoardingRoutes().allRoutes,
         ...AuthenticationRoutes().allRoutes,
         ...HomeRoutes().allRoutes,
+        ...SettingsRoutes().allRoutes,
       };
 
   Route undefinedRoute() {

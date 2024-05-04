@@ -1,6 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vpn_demo/config/routes/settings_routes.dart';
+import 'package:vpn_demo/core/constants/navigation_constants.dart';
 import 'package:vpn_demo/features/home/presentation/cubit/home_cubit.dart';
 part 'settings_state.dart';
 
@@ -16,6 +18,9 @@ class SettingsCubit extends Cubit<SettingsState> {
   bool faceIdSwitch = false;
   bool touchIdSwitch = false;
   bool pinSecurity = false;
+  bool isPincodeButtonDisabled = false;
+  List<TextEditingController> pinCode =
+      List.generate(4, (index) => TextEditingController());
 
   void setSelectedRow(String title) {
     selectedRow = title;
@@ -35,7 +40,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   void toggleFaceIdSwitch(BuildContext context, bool value) {
     faceIdSwitch = value;
     if (faceIdSwitch) {
-      homeCubit(context).openPanel(MediaQuery.of(context).size.height * 0.8);
+      homeCubit(context).openPanel(800);
     }
     emit(SwitchState(title: 'faceId', state: faceIdSwitch));
   }
@@ -50,5 +55,26 @@ class SettingsCubit extends Cubit<SettingsState> {
     pinSecurity = value;
     if (pinSecurity) homeCubit(context).openPanel(600);
     emit(SwitchState(title: 'pinSecurity', state: pinSecurity));
+  }
+
+  void setPinCodeButtonDisabled() {
+    // ignore: collection_methods_unrelated_type
+    pinCode.contains(TextEditingValue.empty)
+        ? isPincodeButtonDisabled = true
+        : isPincodeButtonDisabled = false;
+  }
+
+  void intoSettings(BuildContext context, String route) {
+    switch (route) {
+      case 'Terms of Service':
+        AppNavigation.push(context, SettingsRoutes.termsOfService);
+        break;
+      case 'Privacy Policy':
+        AppNavigation.push(context, SettingsRoutes.privacyPolicy);
+        break;
+      case 'About App':
+        AppNavigation.push(context, SettingsRoutes.aboutApp);
+        break;
+    }
   }
 }

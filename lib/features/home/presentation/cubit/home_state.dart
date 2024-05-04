@@ -51,6 +51,14 @@ class DrawerPageState extends HomeState {
   List<Object?> get props => [page];
 }
 
+class PanelSize extends HomeState {
+  final double size;
+
+  const PanelSize({required this.size});
+  @override
+  List<Object?> get props => [size];
+}
+
 class SpeedometerState extends HomeState {
   final bool isSpeedometer;
 

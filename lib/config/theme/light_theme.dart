@@ -3,6 +3,9 @@ import 'package:vpn_demo/core/utils/colors.dart';
 
 ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: NeutralColors.grey300,
+  appBarTheme: const AppBarTheme(
+    backgroundColor: NeutralColors.grey300
+  ),
   progressIndicatorTheme: const ProgressIndicatorThemeData(
     color: SecondaryColors.secondary500,
   ),

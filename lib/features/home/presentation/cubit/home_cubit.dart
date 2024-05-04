@@ -42,6 +42,7 @@ class HomeCubit extends Cubit<HomeState> {
       customPanelController.isPanelOpen
           ? customPanelController.close()
           : customPanelController.open();
+          emit(PanelSize(size: panelSize));
     }
   }
 

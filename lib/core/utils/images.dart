@@ -8,6 +8,7 @@ const settingsPath = '$imgPath/settings';
 class MainImages {
   static const String worldBg = '$imgPath/worldBg.png';
   static const String logo = '$imgPath/logo.png';
+  static const String logo2 = '$imgPath/logo2.png';
   static const String powerOn = '$imgPath/power_on.png';
   static const String powerOff = '$imgPath/power_off.png';
   static const String premiumWhite = '$imgPath/premium_white.png';

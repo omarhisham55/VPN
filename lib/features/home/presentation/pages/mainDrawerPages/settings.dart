@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vpn_demo/core/components/appbars/home_appbar.dart';
 import 'package:vpn_demo/core/components/panel_header.dart';
@@ -34,7 +35,11 @@ class SettingsWidgets {
                             style: Theme.of(context).textTheme.bodyLarge,
                           ),
                         ),
-                        rowEnding(context, title, settings),
+                        GestureDetector(
+                          onTap: () => SettingsCubit.get(context)
+                              .intoSettings(context, title),
+                          child: rowEnding(context, title, settings),
+                        ),
                       ],
                     );
                   },
@@ -74,7 +79,8 @@ class SettingsWidgets {
         ),
       'Pin Security' => Switch.adaptive(
           value: settings.pinSecurity,
-          onChanged: (value) => settings.togglePinSecuritySwitch(context, value),
+          onChanged: (value) =>
+              settings.togglePinSecuritySwitch(context, value),
         ),
       'Terms of Service' || 'Privacy Policy' || 'About App' => const Padding(
           padding: EdgeInsets.symmetric(vertical: 10),
@@ -103,7 +109,7 @@ class SettingsWidgets {
                   'faceId' => const FaceIdComponent(),
                   'touchId' => const TouchIdComponent(),
                   'pinSecurity' => const PinSecurityComponent(),
-                  String() => Container()
+                  String() => null,
                 },
               ),
             ],

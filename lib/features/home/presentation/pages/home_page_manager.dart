@@ -30,6 +30,8 @@ class HomePageManager extends StatelessWidget {
           borderRadius: const BorderRadius.vertical(
             top: Radius.circular(20),
           ),
+          backdropEnabled: true,
+          
           panelBuilder: (sc) => _homeBuild(context, manager).values.toList()[0],
           body: HomeDrawer(
             scaffold: _homeBuild(context, manager).keys.toList()[0],
