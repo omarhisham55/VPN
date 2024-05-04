@@ -1,0 +1,43 @@
+import 'package:flutter/material.dart';
+import 'package:vpn_demo/core/utils/colors.dart';
+import 'package:vpn_demo/core/utils/images.dart';
+import 'package:vpn_demo/features/home/presentation/cubit/home_cubit.dart';
+
+AppBar homeAppbar({
+  required BuildContext context,
+  String? title,
+  Widget? action,
+}) =>
+    AppBar(
+      backgroundColor: Colors.transparent,
+      leading: Container(
+        margin: const EdgeInsets.only(left: 12),
+        child: ElevatedButton(
+          onPressed: () =>
+              HomeCubit.get(context).drawerController.toggleDrawer(),
+          style: const ButtonStyle(
+            shape: MaterialStatePropertyAll(CircleBorder()),
+            padding: MaterialStatePropertyAll(EdgeInsets.all(4)),
+            backgroundColor: MaterialStatePropertyAll(NeutralColors.white),
+            iconColor: MaterialStatePropertyAll(PrimaryColors.primary500),
+            elevation: MaterialStatePropertyAll(5),
+          ),
+          child: const Icon(Icons.menu),
+        ),
+      ),
+      centerTitle: true,
+      title: title == null
+          ? Image.asset(
+              MainImages.logo,
+              fit: BoxFit.fill,
+              height: 60,
+            )
+          : Text(
+              title,
+              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                    color: PrimaryColors.primary400,
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+      actions: [action ?? Container()],
+    );
