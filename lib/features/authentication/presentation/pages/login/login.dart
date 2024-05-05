@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vpn_demo/config/routes/auth_routes.dart';
 import 'package:vpn_demo/config/routes/home_routes.dart';
+import 'package:vpn_demo/config/sharedPreferences/functions/shared_prefs_auth_func.dart';
 import 'package:vpn_demo/core/components/buttons/filled_button_component.dart';
 import 'package:vpn_demo/core/constants/navigation_constants.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
@@ -57,7 +58,7 @@ class Login extends StatelessWidget {
                   width: double.infinity,
                   padding: const EdgeInsets.only(bottom: 18, top: 64),
                   onPressed: () {
-                    auth.setLoginUser();
+                    SharedPrefsAuthFuncImpl().setUserLogin();
                     AppNavigation.removeAllAndPush(context, HomeRoutes.home);
                   },
                 ),

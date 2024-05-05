@@ -4,12 +4,12 @@ import 'package:lottie/lottie.dart';
 import 'package:vpn_demo/config/routes/auth_routes.dart';
 import 'package:vpn_demo/config/routes/home_routes.dart';
 import 'package:vpn_demo/config/routes/onboarding_routes.dart';
+import 'package:vpn_demo/config/sharedPreferences/functions/shared_prefs_auth_func.dart';
+import 'package:vpn_demo/config/sharedPreferences/functions/shared_prefs_onboarding_func.dart';
 import 'package:vpn_demo/core/constants/navigation_constants.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/core/utils/images.dart';
 import 'package:vpn_demo/core/utils/strings.dart';
-import 'package:vpn_demo/features/authentication/presentation/cubit/authentication_cubit.dart';
-import 'package:vpn_demo/features/onBoarding/presentation/cubit/onboarding_cubit.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -40,8 +40,8 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   void onSplashFinish() {
-    OnboardingCubit.get(context).onBoardingDoneCheck()
-        ? AuthenticationCubit.get(context).isUserLoggedIn()
+    SharedPrefsOnboardingFuncImpl().getOnboardingDone()
+        ? SharedPrefsAuthFuncImpl().getUserLogin()
             ? AppNavigation.replaceWith(context, HomeRoutes.home)
             : AppNavigation.replaceWith(context, AuthenticationRoutes.signUp)
         : AppNavigation.replaceWith(context, OnBoardingRoutes.onBoarding);

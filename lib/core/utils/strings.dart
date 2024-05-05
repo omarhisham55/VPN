@@ -91,4 +91,6 @@ class SettingsStrings {
 class SharedPreferencesStrings {
   static const String isBoardingComplete = 'isBoardingComplete';
   static const String isUserLoggedIn = 'isUserLoggedIn';
+  static const String isDarkMode = 'isDarkMode';
+  static const String vpnInfo = 'vpnInfo';
 }

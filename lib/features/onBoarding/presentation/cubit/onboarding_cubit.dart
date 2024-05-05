@@ -2,9 +2,8 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vpn_demo/config/routes/auth_routes.dart';
-import 'package:vpn_demo/config/sharedPreferences/shared_preferences_controller.dart';
+import 'package:vpn_demo/config/sharedPreferences/functions/shared_prefs_onboarding_func.dart';
 import 'package:vpn_demo/core/constants/navigation_constants.dart';
-import 'package:vpn_demo/core/utils/strings.dart';
 
 part 'onboarding_state.dart';
 
@@ -28,24 +27,12 @@ class OnboardingCubit extends Cubit<OnboardingState> {
   }
 
   void onSkipClick(BuildContext context) {
-    onBoardingDone();
+    SharedPrefsOnboardingFuncImpl().setOnboardingDone();
     AppNavigation.replaceWith(context, AuthenticationRoutes.signUp);
   }
 
   void onPageChanged(int value) {
     currentPage = value;
     emit(OnboardingPageViewState(currentPage: currentPage));
-  }
-
-  void onBoardingDone() {
-    AppSharedPreference.shared.save(
-      SharedPreferencesStrings.isBoardingComplete,
-      true,
-    );
-  }
-
-  bool onBoardingDoneCheck() {
-    return AppSharedPreference.shared
-        .get(SharedPreferencesStrings.isBoardingComplete) as bool;
   }
 }

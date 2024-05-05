@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:vpn_demo/config/sharedPreferences/shared_preferences_controller.dart';
-import 'package:vpn_demo/core/utils/strings.dart';
 
 part 'authentication_state.dart';
 
@@ -88,15 +86,5 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     checkboxState = value ?? false;
     setIsRegisterButtonDisabled('');
     emit(AuthenticationCheckboxState(state: checkboxState));
-  }
-
-  void setLoginUser() {
-    AppSharedPreference.shared
-        .save(SharedPreferencesStrings.isUserLoggedIn, true);
-  }
-
-  bool isUserLoggedIn() {
-    return AppSharedPreference.shared
-        .get(SharedPreferencesStrings.isUserLoggedIn) as bool;
   }
 }
