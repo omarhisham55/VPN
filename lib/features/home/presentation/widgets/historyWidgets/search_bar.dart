@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vpn_demo/core/components/text_fields/defualt_text_field.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
-import 'package:vpn_demo/features/home/presentation/cubit/home_cubit.dart';
+import 'package:vpn_demo/features/home/presentation/cubit/home_cubit/home_cubit.dart';
 
 class HistorySearchBar extends StatelessWidget {
   const HistorySearchBar({super.key});

@@ -4,7 +4,7 @@ import 'package:vpn_demo/core/components/buttons/rounded_appbar_button.dart';
 import 'package:vpn_demo/core/components/panel_header.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/core/utils/images.dart';
-import 'package:vpn_demo/features/home/presentation/cubit/home_cubit.dart';
+import 'package:vpn_demo/features/home/presentation/cubit/home_cubit/home_cubit.dart';
 import 'package:vpn_demo/features/home/presentation/widgets/homeWidgets/card_location.dart';
 import 'package:vpn_demo/features/home/presentation/widgets/homeWidgets/change_location_button.dart';
 import 'package:vpn_demo/features/home/presentation/widgets/homeWidgets/change_location_panel.dart';

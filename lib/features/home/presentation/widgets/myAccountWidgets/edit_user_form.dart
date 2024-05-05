@@ -5,7 +5,7 @@ import 'package:vpn_demo/core/components/text_fields/defualt_text_field.dart';
 import 'package:vpn_demo/core/components/text_fields/text_field_labeled.dart';
 import 'package:vpn_demo/core/utils/strings.dart';
 import 'package:vpn_demo/features/authentication/presentation/cubit/authentication_cubit.dart';
-import 'package:vpn_demo/features/home/presentation/cubit/home_cubit.dart';
+import 'package:vpn_demo/features/home/presentation/cubit/home_cubit/home_cubit.dart';
 
 class EditUserForm extends StatelessWidget {
   final HomeCubit manager;

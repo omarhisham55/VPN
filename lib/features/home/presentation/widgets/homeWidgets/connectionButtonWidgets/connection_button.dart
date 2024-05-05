@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/core/utils/images.dart';
-import 'package:vpn_demo/features/home/presentation/cubit/home_cubit.dart';
+import 'package:vpn_demo/features/home/presentation/cubit/home_cubit/home_cubit.dart';
 import 'package:vpn_demo/features/home/presentation/widgets/homeWidgets/connectionButtonWidgets/bg_circle.dart';
 import 'package:vpn_demo/features/home/presentation/widgets/homeWidgets/connectionButtonWidgets/bottom_info.dart';
 import 'package:vpn_demo/features/home/presentation/widgets/homeWidgets/connectionButtonWidgets/growing_loading_circle_indicator.dart';

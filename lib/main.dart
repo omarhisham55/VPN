@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:vpn_demo/config/dpInjection/get_it_dpi.dart';
 import 'package:vpn_demo/config/routes/routes.dart';
 import 'package:vpn_demo/config/theme/theme_manager.dart';
 import 'package:vpn_demo/core/bloc_observer.dart';
 import 'package:vpn_demo/features/authentication/presentation/cubit/authentication_cubit.dart';
-import 'package:vpn_demo/features/home/presentation/cubit/home_cubit.dart';
+import 'package:vpn_demo/features/home/presentation/cubit/home_cubit/home_cubit.dart';
 import 'package:vpn_demo/features/home/presentation/cubit/settings_cubit/settings_cubit.dart';
 import 'package:vpn_demo/features/onBoarding/presentation/cubit/onboarding_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
-  await init();
+  await DependencyInjection.init();
   runApp(const MyApp());
 }
 
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => HomeCubit()),
         BlocProvider(create: (context) => SettingsCubit()),
       ],
-      child: MaterialApp(
+      child: GetMaterialApp(
         title: 'Vpn Demo',
         theme: mainTheme,
         onGenerateRoute: OnGenerateRoute.onGenerateRoute,

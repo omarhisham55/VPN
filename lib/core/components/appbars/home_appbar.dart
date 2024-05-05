@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vpn_demo/core/constants/navigation_constants.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/core/utils/images.dart';
-import 'package:vpn_demo/features/home/presentation/cubit/home_cubit.dart';
+import 'package:vpn_demo/features/home/presentation/cubit/home_cubit/home_cubit.dart';
 
 AppBar homeAppbar({
   required BuildContext context,

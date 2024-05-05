@@ -5,7 +5,7 @@ import 'package:vpn_demo/core/components/buttons/premium_button.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/core/utils/images.dart';
 import 'package:vpn_demo/core/utils/strings.dart';
-import 'package:vpn_demo/features/home/presentation/cubit/home_cubit.dart';
+import 'package:vpn_demo/features/home/presentation/cubit/home_cubit/home_cubit.dart';
 
 class HomeDrawer extends StatefulWidget {
   final Scaffold scaffold;

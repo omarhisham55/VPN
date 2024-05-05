@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vpn_demo/config/routes/settings_routes.dart';
 import 'package:vpn_demo/core/constants/navigation_constants.dart';
-import 'package:vpn_demo/features/home/presentation/cubit/home_cubit.dart';
+import 'package:vpn_demo/features/home/presentation/cubit/home_cubit/home_cubit.dart';
 part 'settings_state.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {

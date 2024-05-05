@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:vpn_demo/core/components/drawers/home_drawer.dart';
 import 'package:vpn_demo/core/constants/snack_bars.dart';
-import 'package:vpn_demo/features/home/presentation/cubit/home_cubit.dart';
+import 'package:vpn_demo/features/home/presentation/cubit/home_cubit/home_cubit.dart';
 import 'package:vpn_demo/features/home/presentation/pages/mainDrawerPages/about_us.dart';
 import 'package:vpn_demo/features/home/presentation/pages/mainDrawerPages/help.dart';
 import 'package:vpn_demo/features/home/presentation/pages/mainDrawerPages/history.dart';

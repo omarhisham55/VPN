@@ -6,8 +6,8 @@ class AppSharedPreference {
 
   AppSharedPreference({required this.sharedPreferences});
 
-  static AppSharedPreference shared =
-      AppSharedPreference(sharedPreferences: di.getIt<SharedPreferences>());
+  static AppSharedPreference shared = AppSharedPreference(
+      sharedPreferences: di.DependencyInjection.getIt<SharedPreferences>());
   Future<bool> delete(String key) async {
     return await sharedPreferences.remove(key);
   }

@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vpn_demo/core/components/buttons/filled_button_component.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
-import 'package:vpn_demo/features/home/presentation/cubit/home_cubit.dart';
+import 'package:vpn_demo/features/home/presentation/cubit/home_cubit/home_cubit.dart';
 
 class RunSpeedTest extends StatelessWidget {
   const RunSpeedTest({super.key});
