@@ -42,7 +42,7 @@ class HomePageWidgets {
             children: [
               const CardLocation(),
               ChangeLocationButton(
-                onTap: () => manager.openPanel(500),
+                onTap: () => manager.openPanel(800),
               ),
               const ShowTimeAndIpAddress(),
               const ConnectionButton(),
@@ -53,9 +53,10 @@ class HomePageWidgets {
     );
   }
 
-  static Widget changeLanguagePanel() {
-    return const SingleChildScrollView(
-      child: Padding(
+  static Widget changeLanguagePanel(HomeCubit manager) {
+    return SingleChildScrollView(
+      controller: manager.locationPanelScrollController,
+      child: const Padding(
         padding: EdgeInsets.all(22),
         child: Column(
           children: [

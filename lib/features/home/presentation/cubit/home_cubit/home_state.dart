@@ -51,12 +51,13 @@ class DrawerPageState extends HomeState {
   List<Object?> get props => [page];
 }
 
-class PanelSize extends HomeState {
-  final double size;
+class PanelState extends HomeState {
+  final double? size;
+  final bool? isDraggable;
 
-  const PanelSize({required this.size});
+  const PanelState({this.size, this.isDraggable});
   @override
-  List<Object?> get props => [size];
+  List<Object?> get props => [size, isDraggable];
 }
 
 class SpeedometerState extends HomeState {

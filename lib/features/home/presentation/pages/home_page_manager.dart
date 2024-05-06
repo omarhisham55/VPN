@@ -23,18 +23,27 @@ class HomePageManager extends StatelessWidget {
       builder: (context, state) {
         HomeCubit manager = HomeCubit.get(context);
         manager.drawerCheck();
-        return SlidingUpPanel(
-          controller: manager.customPanelController,
-          maxHeight: manager.panelHeight,
-          minHeight: 0.0,
-          borderRadius: const BorderRadius.vertical(
-            top: Radius.circular(20),
-          ),
-          backdropEnabled: true,
-          
-          panelBuilder: (sc) => _homeBuild(context, manager).values.toList()[0],
-          body: HomeDrawer(
-            scaffold: _homeBuild(context, manager).keys.toList()[0],
+        return NotificationListener<ScrollNotification>(
+          onNotification: (notification) {
+            if (notification is ScrollUpdateNotification) {
+              return manager.isPanelDraggable();
+            }
+            return true;
+          },
+          child: SlidingUpPanel(
+            controller: manager.customPanelController,
+            maxHeight: manager.panelHeight,
+            minHeight: 0.0,
+            borderRadius: const BorderRadius.vertical(
+              top: Radius.circular(20),
+            ),
+            backdropEnabled: true,
+            isDraggable: manager.isPanelDraggable(),
+            panelBuilder: (sc) =>
+                _homeBuild(context, manager).values.toList()[0],
+            body: HomeDrawer(
+              scaffold: _homeBuild(context, manager).keys.toList()[0],
+            ),
           ),
         );
       },
@@ -45,7 +54,7 @@ class HomePageManager extends StatelessWidget {
     return switch (manager.drawerSelectedPage) {
       0 => {
           HomePageWidgets.homeScaffold(context, manager):
-              HomePageWidgets.changeLanguagePanel()
+              HomePageWidgets.changeLanguagePanel(manager)
         },
       1 => {
           SpeedTestWidgets.speedTest(context, manager):

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vpn_demo/core/components/text_fields/defualt_text_field.dart';
-import 'package:vpn_demo/core/utils/colors.dart';
+import 'package:vpn_demo/core/components/text_fields/search_bar.dart';
 import 'package:vpn_demo/features/home/presentation/cubit/home_cubit/home_cubit.dart';
 
 class HistorySearchBar extends StatelessWidget {
@@ -8,16 +7,8 @@ class HistorySearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefualtTextField(
-      hintText: 'Search',
+    return DefualtSearchBar(
       controller: HomeCubit.get(context).searchHistoryController,
-      keyboardType: TextInputType.text,
-      borderRadius: 10,
-      prefixIcon: const Icon(
-        Icons.search,
-        color: NeutralColors.grey700,
-      ),
-      suffixIcon: const Icon(Icons.tune_outlined),
     );
   }
 }

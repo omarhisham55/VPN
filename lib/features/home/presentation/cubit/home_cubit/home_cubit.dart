@@ -26,6 +26,9 @@ class HomeCubit extends Cubit<HomeState> {
 
   AdvancedDrawerController drawerController = AdvancedDrawerController();
   final PanelController customPanelController = PanelController();
+  final ScrollController locationPanelScrollController = ScrollController();
+  final TextEditingController searchLocationController =
+      TextEditingController();
   AnimationController? growingCircularContainerController;
   Animation<double>? growingCircularContainerControllerAnimation;
   List<AnimationController> waveAnimationControllers = [];
@@ -35,6 +38,16 @@ class HomeCubit extends Cubit<HomeState> {
   bool isDrawerOpen = false;
   int drawerSelectedPage = 0;
   double panelHeight = 500;
+
+  bool isPanelDraggable() {
+    final bool isDraggable = drawerSelectedPage == 0
+        ? (locationPanelScrollController.hasClients &&
+                locationPanelScrollController.position.pixels == 0)
+            ? true
+            : false
+        : true;
+    return isDraggable;
+  }
 
   void changeDrawerPage(int index) {
     drawerSelectedPage = index;
@@ -48,7 +61,7 @@ class HomeCubit extends Cubit<HomeState> {
       customPanelController.isPanelOpen
           ? customPanelController.close()
           : customPanelController.open();
-      emit(PanelSize(size: panelSize));
+      emit(PanelState(size: panelSize));
     }
   }
 
@@ -181,6 +194,7 @@ class HomeCubit extends Cubit<HomeState> {
     emit(response.fold(
       (failure) => GetServersFailureState(),
       (success) {
+        success.sort((a, b) => a.ping.compareTo(b.ping));
         servers.addAll(success);
         debugPrint('success: ${success.toString()}');
         return GetServersSuccessState();
