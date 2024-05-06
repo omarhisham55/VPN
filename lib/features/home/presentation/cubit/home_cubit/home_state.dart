@@ -67,3 +67,7 @@ class SpeedometerState extends HomeState {
   @override
   List<Object> get props => [isSpeedometer];
 }
+
+class GetServersSuccessState extends HomeState {}
+
+class GetServersFailureState extends HomeState {}

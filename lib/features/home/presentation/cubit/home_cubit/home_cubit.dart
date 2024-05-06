@@ -1,20 +1,26 @@
 import 'dart:async';
 import 'dart:math';
 import 'package:animated_snack_bar/animated_snack_bar.dart';
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:vpn_demo/core/constants/dialogs.dart';
+import 'package:vpn_demo/core/constants/error/failures.dart';
 import 'package:vpn_demo/core/constants/navigation_constants.dart';
 import 'package:vpn_demo/core/constants/snack_bars.dart';
+import 'package:vpn_demo/core/constants/usecases/usecase.dart';
 import 'package:vpn_demo/core/utils/strings.dart';
+import 'package:vpn_demo/features/home/domain/entities/vpn_info.dart';
+import 'package:vpn_demo/features/home/domain/usecases/vpn_usecase.dart';
 
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(HomeInitial());
+  final VpnGetServersUsercase vpnGetServersUsercase;
+  HomeCubit({required this.vpnGetServersUsercase}) : super(HomeInitial());
 
   static HomeCubit get(context) => BlocProvider.of<HomeCubit>(context);
 
@@ -42,7 +48,7 @@ class HomeCubit extends Cubit<HomeState> {
       customPanelController.isPanelOpen
           ? customPanelController.close()
           : customPanelController.open();
-          emit(PanelSize(size: panelSize));
+      emit(PanelSize(size: panelSize));
     }
   }
 
@@ -166,4 +172,19 @@ class HomeCubit extends Cubit<HomeState> {
 
   //history
   final TextEditingController searchHistoryController = TextEditingController();
+
+  List<VpnInfo> servers = [];
+
+  Future<void> getVpnServers() async {
+    final Either<Failure, List<VpnInfo>> response =
+        await vpnGetServersUsercase(NoParams());
+    emit(response.fold(
+      (failure) => GetServersFailureState(),
+      (success) {
+        servers.addAll(success);
+        debugPrint('success: ${success.toString()}');
+        return GetServersSuccessState();
+      },
+    ));
+  }
 }

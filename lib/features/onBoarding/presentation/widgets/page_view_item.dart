@@ -23,9 +23,6 @@ class PageViewItem extends StatelessWidget {
             child: Image.asset(
               image,
               errorBuilder: (context, error, stackTrace) {
-                // debugPrint('stackTrace: $stackTrace');
-                // debugPrint('error: $error');
-
                 return const Text('img error');
               },
             ),

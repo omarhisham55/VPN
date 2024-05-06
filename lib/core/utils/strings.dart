@@ -14,6 +14,10 @@ class MainStrings {
       'Disconnected from the server successfully';
   static const String deleteHistoryCheck =
       'Do you want to delete this history?';
+  static const String englishLocal = 'en';
+  static const String arabicLocal = 'ar';
+  // static const String contentType = "Content-Type";
+  // static const String applicationJson = "application/json";
 }
 
 class DrawerStrings {
@@ -93,4 +97,5 @@ class SharedPreferencesStrings {
   static const String isUserLoggedIn = 'isUserLoggedIn';
   static const String isDarkMode = 'isDarkMode';
   static const String vpnInfo = 'vpnInfo';
+  static const String local = 'local';
 }

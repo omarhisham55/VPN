@@ -39,8 +39,6 @@ class _DropDownSettingState<String> extends State<DropDownSetting<String>> {
       onChanged: (value) {
         setState(() {
           selectedValue = value ?? '' as String;
-          debugPrint('value: $value');
-          debugPrint('selectedValue: $selectedValue');
         });
       },
     );

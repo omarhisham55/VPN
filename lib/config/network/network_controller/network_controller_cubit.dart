@@ -1,17 +1,19 @@
+import 'dart:async';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 
-class NetworkController extends GetxController {
-  final Connectivity _connectivity = Connectivity();
+part 'network_controller_state.dart';
 
-  @override
-  void onInit() {
-    super.onInit();
-    _connectivity.onConnectivityChanged.listen(
-      (event) => _updateConnectivityStatus(event.last),
-    );
+class NetworkController extends Cubit<InternetStatus> {
+  NetworkController() : super(InternetStatus(NetworkStatus.disconnected));
+
+  void checkConnection() async {
+    var connectionResult = await Connectivity().checkConnectivity();
+    _updateConnectivityStatus(connectionResult.last);
   }
 
   void _updateConnectivityStatus(ConnectivityResult connectivityResult) {
@@ -32,9 +34,22 @@ class NetworkController extends GetxController {
         margin: EdgeInsets.zero,
         snackStyle: SnackStyle.GROUNDED,
       );
+      emit(InternetStatus(NetworkStatus.disconnected));
     } else {
       Get.closeCurrentSnackbar();
+      emit(InternetStatus(NetworkStatus.connected));
     }
-    debugPrint('connectivityResult: ${connectivityResult}');
+  }
+
+  late StreamSubscription<List<ConnectivityResult>> _subscription;
+
+  void trackConnectivityChange() {
+    _subscription = Connectivity().onConnectivityChanged.listen((event) {
+      _updateConnectivityStatus(event.last);
+    });
+  }
+
+  void dispose() {
+    _subscription.cancel();
   }
 }

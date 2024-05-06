@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:vpn_demo/config/network/network_controller/network_controller_cubit.dart';
 import 'package:vpn_demo/config/routes/auth_routes.dart';
 import 'package:vpn_demo/config/routes/home_routes.dart';
 import 'package:vpn_demo/config/routes/onboarding_routes.dart';
@@ -27,6 +28,13 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   void initState() {
+    super.initState();
+    _startSlpash();
+    NetworkController().checkConnection();
+    NetworkController().trackConnectivityChange();
+  }
+
+  void _startSlpash() {
     _timer = Timer(const Duration(seconds: 3), onSplashFinish);
     _animController = AnimationController(
       vsync: this,
@@ -36,7 +44,6 @@ class _SplashScreenState extends State<SplashScreen>
     _slide = Tween<Offset>(begin: const Offset(0, 0.1), end: const Offset(0, 0))
         .animate(_animController);
     _animController.forward();
-    super.initState();
   }
 
   void onSplashFinish() {
@@ -82,9 +89,6 @@ class _SplashScreenState extends State<SplashScreen>
                         child: Lottie.asset(
                           OnBoardingImages.onBoardingStart,
                           errorBuilder: (context, error, stackTrace) {
-                            debugPrint('stackTrace: $stackTrace');
-                            debugPrint('error: $error');
-
                             return const Text('img error');
                           },
                         ),
