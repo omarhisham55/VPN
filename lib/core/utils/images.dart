@@ -5,6 +5,7 @@ const onBoardingPath = '$imgPath/ob';
 const socialPath = '$imgPath/socials';
 const settingsPath = '$imgPath/settings';
 const aboutPath = '$imgPath/about';
+const signalsPath = '$imgPath/signal';
 
 class MainImages {
   static const String worldBg = '$imgPath/worldBg.png';
@@ -69,4 +70,18 @@ class AboutImages {
     '$aboutPath/about5.png',
     '$aboutPath/about6.png',
   ];
+}
+
+enum SignalConnectionState { strong, medium, weak }
+
+class SignalImages {
+  static String signal(SignalConnectionState signalState) =>
+      _getSignalImg(signalState);
+  static String _getSignalImg(SignalConnectionState signalState) {
+    return switch (signalState) {
+      SignalConnectionState.strong => '$signalsPath/strong_connection',
+      SignalConnectionState.medium => '$signalsPath/medium_connection',
+      SignalConnectionState.weak => '$signalsPath/weak_connection',
+    };
+  }
 }
