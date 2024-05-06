@@ -40,12 +40,7 @@ class HomeCubit extends Cubit<HomeState> {
   double panelHeight = 500;
 
   bool isPanelDraggable() {
-    final bool isDraggable = drawerSelectedPage == 0
-        ? (locationPanelScrollController.hasClients &&
-                locationPanelScrollController.position.pixels == 0)
-            ? true
-            : false
-        : true;
+    final bool isDraggable = drawerSelectedPage == 0 ? false : true;
     return isDraggable;
   }
 
@@ -194,7 +189,7 @@ class HomeCubit extends Cubit<HomeState> {
     emit(response.fold(
       (failure) => GetServersFailureState(),
       (success) {
-        success.sort((a, b) => a.ping.compareTo(b.ping));
+        success.sort((a, b) => a.speed.compareTo(b.speed));
         servers.addAll(success);
         debugPrint('success: ${success.toString()}');
         return GetServersSuccessState();

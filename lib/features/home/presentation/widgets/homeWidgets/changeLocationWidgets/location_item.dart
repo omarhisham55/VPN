@@ -53,7 +53,7 @@ class LocationsList extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyLarge,
                 ),
                 Text(
-                  model.countryShortName,
+                  model.speed.toString(),
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ],

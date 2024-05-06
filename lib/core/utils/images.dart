@@ -79,9 +79,9 @@ class SignalImages {
       _getSignalImg(signalState);
   static String _getSignalImg(SignalConnectionState signalState) {
     return switch (signalState) {
-      SignalConnectionState.strong => '$signalsPath/strong_connection',
-      SignalConnectionState.medium => '$signalsPath/medium_connection',
-      SignalConnectionState.weak => '$signalsPath/weak_connection',
+      SignalConnectionState.strong => '$signalsPath/strong_connection.png',
+      SignalConnectionState.medium => '$signalsPath/medium_connection.png',
+      SignalConnectionState.weak => '$signalsPath/weak_connection.png',
     };
   }
 }
