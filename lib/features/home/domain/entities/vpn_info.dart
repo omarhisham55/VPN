@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 class VpnInfo extends Equatable {
   final String hostName;
   final String ip;
-  final String ping;
+  final int ping;
   final String countryLongName;
   final String countryShortName;
   final int speed;

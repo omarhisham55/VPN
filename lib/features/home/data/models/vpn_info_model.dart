@@ -15,7 +15,7 @@ class VpnInfoModel extends VpnInfo {
   factory VpnInfoModel.fromJson(Map<String, dynamic> json) => VpnInfoModel(
         hostName: json['HostName'] ?? '',
         ip: json['IP'] ?? '',
-        ping: json['Ping'] ?? '',
+        ping: json['Ping'] ?? 0,
         countryLongName: json['CountryLong'] ?? '',
         countryShortName: json['CountryShort'] ?? '',
         speed: json['Speed'] ?? 0,

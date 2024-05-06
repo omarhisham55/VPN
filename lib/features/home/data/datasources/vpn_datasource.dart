@@ -13,11 +13,11 @@ class VpnDatasourceImpl extends VpnDatasource {
   @override
   Future<List<VpnInfoModel>> getVpnServers() async {
     List<VpnInfoModel> servers = [];
-    apiConsumer.get((EndPoints.getServers)).then((value) {
-      for (var i = 0; i < value.length; i++) {
-        servers.add(VpnInfoModel.fromJson(value[i]));
-      }
-    });
+    final Map<int, Map<String, dynamic>> response =
+        await apiConsumer.get((EndPoints.getServers));
+    for (var e in response.values.toList()) {
+      servers.add(VpnInfoModel.fromJson(e));
+    }
     return servers;
   }
 }

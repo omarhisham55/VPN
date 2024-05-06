@@ -55,17 +55,18 @@ class DioConsumer implements ApiConsumer {
     final csvString = response.toString().split('#')[1].replaceAll('*', '');
     final List<List<dynamic>> rowsAsListOfValues =
         const CsvToListConverter().convert(csvString);
-    final header = rowsAsListOfValues[0];
-    final Map<int, Map<String, dynamic>> tempJson = {};
-    int j = 0;
-    while (j < rowsAsListOfValues.length - 1) {
-      for (int i = 0; i < header.length; i++) {
-        tempJson[j] = {header[i]: rowsAsListOfValues[j][i]};
+    final headers = rowsAsListOfValues[0];
+    Map<int, Map<String, dynamic>> jsonData = {};
+
+    for (int i = 1; i < rowsAsListOfValues.length - 1; i++) {
+      Map<String, dynamic> dataMap = {};
+      for (int j = 0; j < headers.length; j++) {
+        dataMap[headers[j]] = rowsAsListOfValues[i][j];
       }
-      j++;
+      jsonData[i] = dataMap;
     }
-    log('tempJson: ${tempJson.length}');
-    return tempJson;
+
+    return jsonData;
   }
 
   @override
