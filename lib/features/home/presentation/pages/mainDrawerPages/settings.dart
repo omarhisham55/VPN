@@ -65,9 +65,14 @@ class SettingsWidgets {
           value: settings.notificationSwitch,
           onChanged: settings.toggleNotificationSwitch,
         ),
-      'Dark Mode' => Switch.adaptive(
-          value: settings.darkModeSwitch,
-          onChanged: settings.toggleDarkModeSwitch,
+      'Dark Mode' => ValueListenableBuilder<bool>(
+          valueListenable: settings.darkModeSwitch,
+          builder: (context, value, child) {
+            return Switch.adaptive(
+              value: value,
+              onChanged: settings.toggleDarkModeSwitch,
+            );
+          },
         ),
       'Face ID' => Switch.adaptive(
           value: settings.faceIdSwitch,

@@ -2,20 +2,22 @@ import 'package:vpn_demo/config/sharedPreferences/shared_preferences_controller.
 import 'package:vpn_demo/core/utils/strings.dart';
 
 abstract class SharedPrefsAuthFunc {
-  void setUserLogin();
+  Future<bool> setUserLogin();
   bool getUserLogin();
 }
 
-class SharedPrefsAuthFuncImpl extends SharedPrefsAuthFunc {
+class SharedPrefsAuthFuncImpl implements SharedPrefsAuthFunc {
+  final AppSharefdPrefs appSharedPrefs;
+
+  SharedPrefsAuthFuncImpl({required this.appSharedPrefs});
   @override
   bool getUserLogin() {
-    return AppSharedPreference.shared
-        .get(SharedPreferencesStrings.isUserLoggedIn) as bool;
+    return appSharedPrefs.get(SharedPreferencesStrings.isUserLoggedIn) as bool;
   }
 
   @override
-  void setUserLogin() {
-    AppSharedPreference.shared.save(
+  Future<bool> setUserLogin() {
+    return appSharedPrefs.save(
       SharedPreferencesStrings.isUserLoggedIn,
       true,
     );

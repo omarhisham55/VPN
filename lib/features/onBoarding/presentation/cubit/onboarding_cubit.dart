@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vpn_demo/config/dpInjection/get_it_dpi.dart';
 import 'package:vpn_demo/config/routes/auth_routes.dart';
 import 'package:vpn_demo/config/sharedPreferences/functions/shared_prefs_onboarding_func.dart';
 import 'package:vpn_demo/core/constants/navigation_constants.dart';
@@ -27,7 +28,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
   }
 
   void onSkipClick(BuildContext context) {
-    SharedPrefsOnboardingFuncImpl().setOnboardingDone();
+    DependencyInjection.getIt<SharedPrefsOnboardingFunc>().setOnboardingDone();
     AppNavigation.replaceWith(context, AuthenticationRoutes.signUp);
   }
 

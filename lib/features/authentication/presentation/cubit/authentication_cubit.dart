@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:vpn_demo/config/dpInjection/get_it_dpi.dart';
+import 'package:vpn_demo/config/routes/auth_routes.dart';
+import 'package:vpn_demo/config/routes/home_routes.dart';
+import 'package:vpn_demo/config/sharedPreferences/functions/shared_prefs_auth_func.dart';
+import 'package:vpn_demo/core/constants/navigation_constants.dart';
 
 part 'authentication_state.dart';
 
@@ -20,71 +26,69 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
   final List<TextEditingController> otpCode =
       List.generate(4, (index) => TextEditingController());
 
-  bool isRegisterButtonDisabled = true;
-  bool isLoginButtonDisabled = true;
-  bool isSendPasswordOtpButtonDisabled = true;
-  bool isSendVerificationOtpButtonDisabled = true;
-  bool isRegisterObscure = true;
-  bool isLoginObscure = true;
-  bool isConfirmObscure = true;
-  bool checkboxState = false;
+  ValueNotifier<bool> isRegisterButtonDisabled = ValueNotifier<bool>(true);
+  ValueNotifier<bool> checkboxState = ValueNotifier<bool>(false);
+  ValueNotifier<bool> isSendVerificationOtpButtonDisabled =
+      ValueNotifier<bool>(true);
+  ValueNotifier<bool> isLoginButtonDisabled = ValueNotifier<bool>(true);
+  ValueNotifier<bool> isSendPasswordOtpButtonDisabled =
+      ValueNotifier<bool>(true);
+  ValueNotifier<bool> isRegisterObscure = ValueNotifier<bool>(true);
+  ValueNotifier<bool> isLoginObscure = ValueNotifier<bool>(true);
+  ValueNotifier<bool> isConfirmObscure = ValueNotifier<bool>(true);
   void setIsRegisterButtonDisabled(String v) {
     name.text.isNotEmpty &&
             email.text.isNotEmpty &&
             password.text.isNotEmpty &&
             confirmPassword.text.isNotEmpty &&
-            checkboxState == true
-        ? isRegisterButtonDisabled = false
-        : isRegisterButtonDisabled = true;
+            checkboxState.value == true
+        ? isRegisterButtonDisabled.value = false
+        : isRegisterButtonDisabled.value = true;
+  }
 
-    emit(AuthenticationButtonState(
-        isDisabled: 'register: $isRegisterButtonDisabled'));
+  void onSignUpPress(BuildContext context) {
+    AppNavigation.push(context, AuthenticationRoutes.verification);
+  }
+
+  void onLoginPress(BuildContext context) {
+    DependencyInjection.getIt<SharedPrefsAuthFunc>().setUserLogin();
+    AppNavigation.removeAllAndPush(context, HomeRoutes.home);
+  }
+
+  void toggleCheckbox(bool? value) {
+    checkboxState.value = value ?? false;
+    setIsRegisterButtonDisabled('');
   }
 
   void setIsLoginButtonDisabled(String v) {
     email.text.isNotEmpty && password.text.isNotEmpty
-        ? isLoginButtonDisabled = false
-        : isLoginButtonDisabled = true;
-    emit(
-        AuthenticationButtonState(isDisabled: 'login: $isLoginButtonDisabled'));
+        ? isLoginButtonDisabled.value = false
+        : isLoginButtonDisabled.value = true;
   }
 
   void setSentPasswordOtpButtonDisabled(String v) {
     v.isNotEmpty
-        ? isSendPasswordOtpButtonDisabled = false
-        : isSendPasswordOtpButtonDisabled = true;
-    emit(AuthenticationButtonState(
-        isDisabled: 'otp: $isSendPasswordOtpButtonDisabled'));
+        ? isSendPasswordOtpButtonDisabled.value = false
+        : isSendPasswordOtpButtonDisabled.value = true;
   }
 
   void setSentVerificationOtpButtonDisabled() {
-    // ignore: collection_methods_unrelated_type
-    otpCode.contains(TextEditingValue.empty)
-        ? isSendVerificationOtpButtonDisabled = true
-        : isSendVerificationOtpButtonDisabled = false;
-
-    emit(AuthenticationButtonState(
-        isDisabled: 'otp: $isSendVerificationOtpButtonDisabled'));
+    if (otpCode.every((element) => element.text.isNotEmpty)) {
+      isSendVerificationOtpButtonDisabled.value = false;
+    } else {
+      isSendVerificationOtpButtonDisabled.value = true;
+    }
   }
 
-  void togglePassObscure() {
-    isRegisterObscure = !isRegisterObscure;
-    emit(AuthenticationPasswordState(isRegisterObscure, isConfirmObscure));
+  void togglePassword() {
+    isRegisterObscure.value = !isRegisterObscure.value;
   }
 
-  void toggleLoginPassObscure() {
-    isLoginObscure = !isLoginObscure;
-    emit(AuthenticationPasswordState(isLoginObscure, true));
+  void toggleConfirmPassword() {
+    isConfirmObscure.value = !isConfirmObscure.value;
   }
 
-  void toggleConfirmPassObscure() {
-    isConfirmObscure = !isConfirmObscure;
-    emit(AuthenticationPasswordState(isRegisterObscure, isConfirmObscure));
-  }
-
-  void toggleCheckbox(bool? value) {
-    checkboxState = value ?? false;
-    setIsRegisterButtonDisabled('');
-    emit(AuthenticationCheckboxState(state: checkboxState));
+  void toggleLoginPassword() {
+    isLoginObscure.value = !isLoginObscure.value;
   }
 }

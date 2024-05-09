@@ -6,18 +6,19 @@ abstract class SharedPrefsOnboardingFunc {
   bool getOnboardingDone();
 }
 
-class SharedPrefsOnboardingFuncImpl
-    extends SharedPrefsOnboardingFunc {
+class SharedPrefsOnboardingFuncImpl extends SharedPrefsOnboardingFunc {
+  final AppSharefdPrefs appSharedPrefs;
 
+  SharedPrefsOnboardingFuncImpl({required this.appSharedPrefs});
   @override
   bool getOnboardingDone() {
-    return AppSharedPreference.shared
-        .get(SharedPreferencesStrings.isBoardingComplete) as bool;
+    return appSharedPrefs.get(SharedPreferencesStrings.isBoardingComplete)
+        as bool;
   }
 
   @override
   void setOnboardingDone() {
-    AppSharedPreference.shared.save(
+    appSharedPrefs.save(
       SharedPreferencesStrings.isBoardingComplete,
       true,
     );

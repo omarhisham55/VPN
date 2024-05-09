@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/config/theme/theme_manager.dart';
+import 'package:vpn_demo/core/utils/colors.dart';
 
 class OrDivider extends StatelessWidget {
   final String text;
@@ -13,7 +15,11 @@ class OrDivider extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Text(
             text,
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  color: ThemeController.isDarkTheme
+                      ? NeutralColors.grey900
+                      : null,
+                ),
           ),
         ),
         const Expanded(child: Divider()),

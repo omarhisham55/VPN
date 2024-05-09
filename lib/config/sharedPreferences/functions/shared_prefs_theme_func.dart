@@ -7,15 +7,17 @@ abstract class SharedPrefsThemeFunc {
 }
 
 class SharedPrefsThemeFuncImpl extends SharedPrefsThemeFunc {
+  final AppSharefdPrefs appSharedPrefs;
+
+  SharedPrefsThemeFuncImpl({required this.appSharedPrefs});
   @override
   bool getThemeMode() {
-    return AppSharedPreference.shared.get(SharedPreferencesStrings.isDarkMode)
-        as bool;
+    return appSharedPrefs.get(SharedPreferencesStrings.isDarkMode) as bool;
   }
 
   @override
   void setThemeMode(bool themeMode) {
-    AppSharedPreference.shared.save(
+    appSharedPrefs.save(
       SharedPreferencesStrings.isDarkMode,
       themeMode,
     );

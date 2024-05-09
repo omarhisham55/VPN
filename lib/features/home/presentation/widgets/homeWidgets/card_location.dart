@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/config/theme/theme_manager.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
+import 'package:vpn_demo/core/utils/strings.dart';
 
 class CardLocation extends StatelessWidget {
   const CardLocation({super.key});
@@ -9,7 +11,9 @@ class CardLocation extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(10),
       margin: const EdgeInsets.all(24),
-      color: NeutralColors.grey100,
+      color: ThemeController.isDarkTheme
+          ? NeutralColors.grey700.withOpacity(0.3)
+          : NeutralColors.grey100,
       child: Row(
         children: [
           Container(
@@ -19,9 +23,10 @@ class CardLocation extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               color: NeutralColors.grey400,
             ),
-            child: const Icon(
+            child: Icon(
               Icons.language_outlined,
               size: 30,
+              color: Theme.of(context).iconTheme.color,
             ),
           ),
           Expanded(
@@ -29,22 +34,23 @@ class CardLocation extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Best Location',
+                  MainStrings.bestLoction,
                   style: Theme.of(context)
                       .textTheme
                       .bodyMedium!
                       .copyWith(color: PrimaryColors.primary500),
                 ),
                 Text(
-                  'Fastest Server',
+                  MainStrings.fastestServer,
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
               ],
             ),
           ),
-          const Icon(
+          Icon(
             Icons.signal_cellular_alt,
             size: 30,
+            color: Theme.of(context).iconTheme.color,
           ),
         ],
       ),

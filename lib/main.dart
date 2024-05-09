@@ -6,6 +6,7 @@ import 'package:vpn_demo/config/network/network_controller/network_controller_cu
 import 'package:vpn_demo/config/routes/routes.dart';
 import 'package:vpn_demo/config/theme/theme_manager.dart';
 import 'package:vpn_demo/core/bloc_observer.dart';
+import 'package:vpn_demo/core/utils/strings.dart';
 import 'package:vpn_demo/features/authentication/presentation/cubit/authentication_cubit.dart';
 import 'package:vpn_demo/features/home/presentation/cubit/home_cubit/home_cubit.dart';
 import 'package:vpn_demo/features/home/presentation/cubit/settings_cubit/settings_cubit.dart';
@@ -29,16 +30,20 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => OnboardingCubit()),
         BlocProvider(create: (context) => AuthenticationCubit()),
         BlocProvider(
-          create: (context) =>
-              DependencyInjection.getIt<HomeCubit>()..getVpnServers(),
+          create: (context) => DependencyInjection.getIt<HomeCubit>(),
         ),
-        BlocProvider(create: (context) => SettingsCubit()),
+        BlocProvider(
+            create: (context) => DependencyInjection.getIt<SettingsCubit>()),
       ],
-      child: GetMaterialApp(
-        title: 'Vpn Demo',
-        theme: mainTheme,
-        onGenerateRoute: OnGenerateRoute.onGenerateRoute,
-        debugShowCheckedModeBanner: false,
+      child: BlocBuilder<SettingsCubit, SettingsState>(
+        builder: (context, state) {
+          return GetMaterialApp(
+            title: MainStrings.appName,
+            theme: ThemeController.mainTheme,
+            onGenerateRoute: OnGenerateRoute.onGenerateRoute,
+            debugShowCheckedModeBanner: false,
+          );
+        },
       ),
     );
   }

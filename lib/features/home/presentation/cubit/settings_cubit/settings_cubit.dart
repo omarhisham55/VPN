@@ -1,7 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vpn_demo/config/routes/settings_routes.dart';
+import 'package:vpn_demo/config/theme/theme_manager.dart';
 import 'package:vpn_demo/core/constants/navigation_constants.dart';
 import 'package:vpn_demo/features/home/presentation/cubit/home_cubit/home_cubit.dart';
 part 'settings_state.dart';
@@ -14,7 +16,8 @@ class SettingsCubit extends Cubit<SettingsState> {
 
   String selectedRow = '';
   bool notificationSwitch = false;
-  bool darkModeSwitch = false;
+  ValueNotifier<bool> darkModeSwitch =
+      ValueNotifier<bool>(ThemeController.isDarkTheme);
   bool faceIdSwitch = false;
   bool touchIdSwitch = false;
   bool pinSecurity = false;
@@ -33,8 +36,9 @@ class SettingsCubit extends Cubit<SettingsState> {
   }
 
   void toggleDarkModeSwitch(bool value) {
-    darkModeSwitch = value;
-    emit(SwitchState(title: 'darkMode', state: darkModeSwitch));
+    darkModeSwitch.value = value;
+    ThemeController.saveTheme(darkModeSwitch.value);
+    emit(SwitchState(state: darkModeSwitch.value, title: ''));
   }
 
   void toggleFaceIdSwitch(BuildContext context, bool value) {

@@ -8,7 +8,8 @@ const aboutPath = '$imgPath/about';
 const signalsPath = '$imgPath/signal';
 
 class MainImages {
-  static const String worldBg = '$imgPath/worldBg.png';
+  static const String worldBgLight = '$imgPath/worldBgLight.png';
+  static const String worldBgDark = '$imgPath/worldBgDark.png';
   static const String logo = '$imgPath/logo.png';
   static const String logo2 = '$imgPath/logo2.png';
   static const String powerOn = '$imgPath/power_on.png';

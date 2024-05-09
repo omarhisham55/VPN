@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:vpn_demo/config/dpInjection/get_it_dpi.dart';
 import 'package:vpn_demo/config/network/network_controller/network_controller_cubit.dart';
 import 'package:vpn_demo/config/routes/auth_routes.dart';
 import 'package:vpn_demo/config/routes/home_routes.dart';
@@ -47,8 +48,8 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   void onSplashFinish() {
-    SharedPrefsOnboardingFuncImpl().getOnboardingDone()
-        ? SharedPrefsAuthFuncImpl().getUserLogin()
+    DependencyInjection.getIt<SharedPrefsOnboardingFunc>().getOnboardingDone()
+        ? DependencyInjection.getIt<SharedPrefsAuthFunc>().getUserLogin()
             ? AppNavigation.replaceWith(context, HomeRoutes.home)
             : AppNavigation.replaceWith(context, AuthenticationRoutes.signUp)
         : AppNavigation.replaceWith(context, OnBoardingRoutes.onBoarding);

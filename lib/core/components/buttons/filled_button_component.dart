@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 
@@ -7,7 +8,7 @@ class DefualtAppButton extends StatelessWidget {
   final double? width;
   final double? borderRadius;
   final EdgeInsets? padding;
-  final bool? isDisabled;
+  final ValueListenable<bool>? isDisabled;
   const DefualtAppButton({
     super.key,
     required this.text,
@@ -20,26 +21,31 @@ class DefualtAppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: padding!,
-      child: MaterialButton(
-        minWidth: width,
-        height: 48,
-        color: PrimaryColors.primary500,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(25),
-        ),
-        onPressed: isDisabled ?? false ? null : onPressed,
-        disabledColor: NeutralColors.grey500,
-        disabledTextColor: NeutralColors.white,
-        child: Text(
-          text,
-          style: Theme.of(context)
-              .textTheme
-              .titleMedium!
-              .copyWith(color: NeutralColors.white),
-        ),
-      ),
+    return ValueListenableBuilder(
+      valueListenable: isDisabled ?? ValueNotifier<bool>(false),
+      builder: (context, value, child) {
+        return Padding(
+          padding: padding!,
+          child: MaterialButton(
+            minWidth: width,
+            height: 48,
+            color: PrimaryColors.primary500,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25),
+            ),
+            onPressed: value ? null : onPressed,
+            disabledColor: NeutralColors.grey500,
+            disabledTextColor: NeutralColors.white,
+            child: Text(
+              text,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium!
+                  .copyWith(color: NeutralColors.white),
+            ),
+          ),
+        );
+      },
     );
   }
 }

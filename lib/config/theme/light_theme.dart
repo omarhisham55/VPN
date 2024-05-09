@@ -4,10 +4,18 @@ import 'package:vpn_demo/core/utils/colors.dart';
 ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: NeutralColors.grey300,
   appBarTheme: const AppBarTheme(
-    backgroundColor: NeutralColors.grey300
+    backgroundColor: NeutralColors.grey100,
+    centerTitle: true,
   ),
   progressIndicatorTheme: const ProgressIndicatorThemeData(
     color: SecondaryColors.secondary500,
+  ),
+  iconTheme: const IconThemeData(
+    color: NeutralColors.black,
+  ),
+  checkboxTheme: const CheckboxThemeData(
+    checkColor: MaterialStatePropertyAll(NeutralColors.white),
+    side: BorderSide(color: NeutralColors.black),
   ),
   textTheme: const TextTheme(
     displayLarge: TextStyle(),
@@ -23,10 +31,14 @@ ThemeData lightTheme = ThemeData(
     headlineMedium: TextStyle(),
     headlineSmall: TextStyle(),
     titleLarge: TextStyle(),
-    titleMedium: TextStyle(),
+    titleMedium: TextStyle(
+      color: NeutralColors.black,
+    ),
     titleSmall: TextStyle(),
     bodyLarge: TextStyle(),
-    bodyMedium: TextStyle(),
+    bodyMedium: TextStyle(
+      color: NeutralColors.black,
+    ),
     bodySmall: TextStyle(),
     labelLarge: TextStyle(),
     labelMedium: TextStyle(),

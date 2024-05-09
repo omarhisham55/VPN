@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/config/theme/theme_manager.dart';
 import 'package:vpn_demo/core/constants/dialogs.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 
@@ -11,7 +12,9 @@ class HistoryItem extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       decoration: BoxDecoration(
-        color: NeutralColors.white,
+        color: ThemeController.isDarkTheme
+            ? NeutralColors.grey500.withOpacity(0.1)
+            : NeutralColors.white,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(

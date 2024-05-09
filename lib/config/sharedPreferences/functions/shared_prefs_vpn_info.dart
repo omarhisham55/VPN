@@ -8,17 +8,20 @@ abstract class SharedPrefsVpnInfoFunc {
 }
 
 class SharedPrefsVpnInfoFuncImpl extends SharedPrefsVpnInfoFunc {
+  final AppSharefdPrefs appSharedPrefs;
+
+  SharedPrefsVpnInfoFuncImpl({required this.appSharedPrefs});
   @override
   VpnInfoModel getVpnInfo() {
     return VpnInfoModel.fromJson(
-      AppSharedPreference.shared.get(SharedPreferencesStrings.vpnInfo)
+      appSharedPrefs.get(SharedPreferencesStrings.vpnInfo)
           as Map<String, dynamic>,
     );
   }
 
   @override
   void setVpnInfo(VpnInfoModel vpnInfo) {
-    AppSharedPreference.shared.save(
+    appSharedPrefs.save(
       SharedPreferencesStrings.vpnInfo,
       vpnInfo.toMap(),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/config/theme/theme_manager.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/core/utils/strings.dart';
 
@@ -14,6 +15,7 @@ class ChangeLocationButton extends StatelessWidget {
       children: [
         MaterialButton(
           onPressed: onTap,
+          color: ThemeController.isDarkTheme ? NeutralColors.grey200 : null,
           shape: OutlineInputBorder(
             borderSide: const BorderSide(color: PrimaryColors.primary500),
             borderRadius: BorderRadius.circular(30),

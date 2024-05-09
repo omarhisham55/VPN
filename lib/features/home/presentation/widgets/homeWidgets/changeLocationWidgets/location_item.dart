@@ -14,16 +14,16 @@ class LocationsList extends StatelessWidget {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         HomeCubit manager = HomeCubit.get(context);
-        List<VpnInfo> _servers = manager.servers;
+        List<VpnInfo> servers = manager.servers;
         return ConditionalBuilder(
           condition: manager.servers.isNotEmpty,
           builder: (context) => ListView.separated(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) =>
-                _loactionItem(context, _servers[index]),
+                _loactionItem(context, servers[index]),
             separatorBuilder: (context, index) => const SizedBox(height: 12),
-            itemCount: _servers.length,
+            itemCount: servers.length,
           ),
           fallback: (context) => Text(
             'No Locations Available',

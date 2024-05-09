@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/config/theme/theme_manager.dart';
 import 'package:vpn_demo/core/utils/images.dart';
 
 class ImageBg extends StatelessWidget {
@@ -9,7 +10,9 @@ class ImageBg extends StatelessWidget {
     return SizedBox(
       height: double.infinity,
       child: Image.asset(
-        MainImages.worldBg,
+        ThemeController.isDarkTheme
+            ? MainImages.worldBgDark
+            : MainImages.worldBgLight,
         fit: BoxFit.cover,
       ),
     );

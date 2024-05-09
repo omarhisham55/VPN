@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:vpn_demo/config/theme/theme_manager.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 
 class DefualtTextField extends StatelessWidget {
@@ -29,7 +30,7 @@ class DefualtTextField extends StatelessWidget {
     this.textAlign = TextAlign.start,
     this.inputFormatters,
     this.prefixIcon,
-    this.borderRadius = 0,
+    this.borderRadius = 10,
     this.initialValue,
   });
 
@@ -47,7 +48,9 @@ class DefualtTextField extends StatelessWidget {
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: const TextStyle(color: NeutralColors.grey700),
-          fillColor: NeutralColors.white,
+          fillColor: ThemeController.isDarkTheme
+              ? NeutralColors.grey900
+              : NeutralColors.white,
           filled: true,
           enabledBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: NeutralColors.grey500),

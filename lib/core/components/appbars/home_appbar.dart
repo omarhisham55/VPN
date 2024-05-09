@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/config/theme/theme_manager.dart';
 import 'package:vpn_demo/core/constants/navigation_constants.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/core/utils/images.dart';
@@ -16,12 +17,16 @@ AppBar homeAppbar({
         child: ElevatedButton(
           onPressed: () =>
               HomeCubit.get(context).drawerController.toggleDrawer(),
-          style: const ButtonStyle(
-            shape: MaterialStatePropertyAll(CircleBorder()),
-            padding: MaterialStatePropertyAll(EdgeInsets.all(4)),
-            backgroundColor: MaterialStatePropertyAll(NeutralColors.white),
-            iconColor: MaterialStatePropertyAll(PrimaryColors.primary500),
-            elevation: MaterialStatePropertyAll(5),
+          style: ButtonStyle(
+            shape: const MaterialStatePropertyAll(CircleBorder()),
+            padding: const MaterialStatePropertyAll(EdgeInsets.all(4)),
+            backgroundColor: MaterialStatePropertyAll(
+              ThemeController.isDarkTheme
+                  ? NeutralColors.grey900
+                  : NeutralColors.white,
+            ),
+            iconColor: const MaterialStatePropertyAll(PrimaryColors.primary500),
+            elevation: const MaterialStatePropertyAll(5),
           ),
           child: const Icon(Icons.menu),
         ),

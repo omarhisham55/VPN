@@ -4,6 +4,8 @@ class MainStrings {
   static const String appName = 'VPN';
   static const String undefinedRoute = 'Undefined Route';
   static const String tapToConnect = 'Tap to Connect';
+  static const String bestLoction = 'Beast Location';
+  static const String fastestServer = 'Fastest Server';
   static const String changeLocation = 'Change Location';
   static const String disconnectDialogContent = 'Do you want to disconnect?';
   static const String cancel = 'Cancel';
