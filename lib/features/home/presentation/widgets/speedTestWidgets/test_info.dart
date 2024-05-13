@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/config/theme/theme_manager.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 
 class TestInfo extends StatelessWidget {
@@ -133,7 +134,9 @@ class TestInfo extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         margin: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: NeutralColors.white,
+          color: ThemeController.isDarkTheme
+              ? NeutralColors.lightBlack
+              : NeutralColors.white,
           borderRadius: BorderRadius.circular(12),
         ),
         child: child,

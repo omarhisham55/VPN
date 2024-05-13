@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/config/theme/theme_manager.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 
 class RoundedAppbarButton extends StatelessWidget {
@@ -11,7 +12,7 @@ class RoundedAppbarButton extends StatelessWidget {
     required this.icon,
     required this.onTap,
     this.iconColor = PrimaryColors.primary500,
-    this.backgroundColor = NeutralColors.white,
+    this.backgroundColor,
   });
 
   @override
@@ -23,7 +24,12 @@ class RoundedAppbarButton extends StatelessWidget {
         style: ButtonStyle(
           shape: const MaterialStatePropertyAll(CircleBorder()),
           padding: const MaterialStatePropertyAll(EdgeInsets.all(8)),
-          backgroundColor: MaterialStatePropertyAll(backgroundColor),
+          backgroundColor: MaterialStatePropertyAll(
+            backgroundColor ??
+                (ThemeController.isDarkTheme
+                    ? NeutralColors.grey900
+                    : NeutralColors.white),
+          ),
           iconColor: MaterialStatePropertyAll(iconColor),
           elevation: const MaterialStatePropertyAll(5),
         ),

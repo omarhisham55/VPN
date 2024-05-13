@@ -1,3 +1,5 @@
+import 'package:vpn_demo/config/theme/theme_manager.dart';
+
 const imgPath = 'assets/images';
 const drawerPath = '$imgPath/drawerImgs';
 const sharePath = '$imgPath/share';
@@ -80,9 +82,13 @@ class SignalImages {
       _getSignalImg(signalState);
   static String _getSignalImg(SignalConnectionState signalState) {
     return switch (signalState) {
-      SignalConnectionState.strong => '$signalsPath/strong_connection.png',
-      SignalConnectionState.medium => '$signalsPath/medium_connection.png',
-      SignalConnectionState.weak => '$signalsPath/weak_connection.png',
+      SignalConnectionState.strong => '$signalsPath/high_connection.png',
+      SignalConnectionState.medium => ThemeController.isDarkTheme
+          ? '$signalsPath/medium_connection_dark.png'
+          : '$signalsPath/medium_connection.png',
+      SignalConnectionState.weak => ThemeController.isDarkTheme
+          ? '$signalsPath/low_connection_dark.png'
+          : '$signalsPath/low_connection.png',
     };
   }
 }

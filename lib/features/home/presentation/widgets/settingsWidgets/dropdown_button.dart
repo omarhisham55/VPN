@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/config/theme/theme_manager.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 
 class DropDownSetting<String> extends StatefulWidget {
@@ -24,7 +25,9 @@ class _DropDownSettingState<String> extends State<DropDownSetting<String>> {
           border: Border.all(width: 1, color: NeutralColors.grey700),
         ),
       ),
-      dropdownColor: NeutralColors.white,
+      dropdownColor: ThemeController.isDarkTheme
+          ? NeutralColors.lightBlack
+          : NeutralColors.white,
       padding: const EdgeInsets.symmetric(vertical: 10),
       value: selectedValue,
       items: widget.items

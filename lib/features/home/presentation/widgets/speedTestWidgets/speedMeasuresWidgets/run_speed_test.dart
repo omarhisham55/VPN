@@ -34,7 +34,12 @@ class RunSpeedTest extends StatelessWidget {
                             manager.isSpeedometer ? NeutralColors.white : null,
                         borderRadius: BorderRadius.circular(5),
                       ),
-                      child: const Icon(Icons.radar),
+                      child: Icon(
+                        Icons.radar,
+                        color: manager.isSpeedometer
+                            ? PrimaryColors.primary500
+                            : NeutralColors.grey100,
+                      ),
                     ),
                   ),
                   const SizedBox(width: 5),
@@ -49,7 +54,12 @@ class RunSpeedTest extends StatelessWidget {
                             !manager.isSpeedometer ? NeutralColors.white : null,
                         borderRadius: BorderRadius.circular(5),
                       ),
-                      child: const Icon(Icons.stacked_line_chart),
+                      child: Icon(
+                        Icons.stacked_line_chart,
+                        color: !manager.isSpeedometer
+                            ? PrimaryColors.primary500
+                            : NeutralColors.grey100,
+                      ),
                     ),
                   ),
                 ],

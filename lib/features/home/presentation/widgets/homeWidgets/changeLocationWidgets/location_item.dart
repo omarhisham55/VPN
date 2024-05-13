@@ -1,6 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vpn_demo/config/theme/theme_manager.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/core/utils/images.dart';
 import 'package:vpn_demo/features/home/domain/entities/vpn_info.dart';
@@ -38,8 +39,11 @@ class LocationsList extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
       decoration: BoxDecoration(
-          border: Border.all(color: NeutralColors.grey500),
-          borderRadius: BorderRadius.circular(10)),
+        border: ThemeController.isDarkTheme
+            ? null
+            : Border.all(color: NeutralColors.grey500),
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Row(
         children: [
           Image.asset(MainImages.logo, width: 60),
@@ -59,7 +63,11 @@ class LocationsList extends StatelessWidget {
               ],
             ),
           ),
-          const Icon(Icons.signal_cellular_alt_sharp),
+          Image.asset(
+            SignalImages.signal(SignalConnectionState.weak),
+            fit: BoxFit.cover,
+            height: 26,
+          ),
         ],
       ),
     );

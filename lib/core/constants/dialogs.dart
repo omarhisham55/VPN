@@ -1,10 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:vpn_demo/core/components/buttons/filled_button_component.dart';
 import 'package:vpn_demo/core/components/buttons/outlined_button_component.dart';
 import 'package:vpn_demo/core/constants/navigation_constants.dart';
-import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/core/utils/strings.dart';
 
 class AppDialogs {
@@ -13,7 +10,7 @@ class AppDialogs {
       context: context,
       builder: (context) {
         return AlertDialog.adaptive(
-          backgroundColor: NeutralColors.white,
+          backgroundColor: Theme.of(context).dialogBackgroundColor,
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -72,7 +69,7 @@ class AppDialogs {
     return showAdaptiveDialog(
       context: context,
       builder: (context) => AlertDialog.adaptive(
-        backgroundColor: NeutralColors.white,
+        backgroundColor: Theme.of(context).dialogBackgroundColor,
         title: Stack(
           children: [
             Align(

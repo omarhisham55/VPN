@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/config/theme/theme_manager.dart';
 import 'package:vpn_demo/core/components/appbars/home_appbar.dart';
 import 'package:vpn_demo/core/components/buttons/premium_button.dart';
 import 'package:vpn_demo/core/components/buttons/rounded_appbar_button.dart';
@@ -17,7 +18,6 @@ class MyAccountWidgets {
         action: RoundedAppbarButton(
           icon: const Icon(
             Icons.tune_outlined,
-            color: PrimaryColors.primary500,
           ),
           onTap: () => manager.openPanel(500),
         ),
@@ -52,6 +52,8 @@ class MyAccountWidgets {
               text: 'Sign Out',
               onPressed: () {},
               textColor: NeutralColors.red,
+              buttonColor:
+                  ThemeController.isDarkTheme ? NeutralColors.lightBlack : null,
               icon: const Icon(
                 Icons.logout,
                 color: NeutralColors.red,
@@ -100,7 +102,9 @@ class MyAccountWidgets {
       width: double.infinity,
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: NeutralColors.white,
+        color: ThemeController.isDarkTheme
+            ? NeutralColors.lightBlack
+            : NeutralColors.white,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -130,7 +134,9 @@ class MyAccountWidgets {
       width: double.infinity,
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
-        color: NeutralColors.white,
+        color: ThemeController.isDarkTheme
+            ? NeutralColors.lightBlack
+            : NeutralColors.white,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -189,7 +195,8 @@ class MyAccountWidgets {
 
   static Widget editUserPanel(BuildContext context, HomeCubit manager) {
     return Card(
-      color: NeutralColors.grey100,
+      color: Colors.transparent,
+      elevation: 0,
       child: Padding(
         padding: const EdgeInsets.all(22),
         child: Column(

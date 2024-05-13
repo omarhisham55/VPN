@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:vpn_demo/core/components/text_fields/defualt_text_field.dart';
-import 'package:vpn_demo/core/utils/colors.dart';
 
 class DefualtSearchBar extends StatelessWidget {
   final TextEditingController controller;
@@ -13,11 +12,14 @@ class DefualtSearchBar extends StatelessWidget {
       controller: controller,
       keyboardType: TextInputType.text,
       borderRadius: 10,
-      prefixIcon: const Icon(
+      prefixIcon: Icon(
         Icons.search,
-        color: NeutralColors.grey700,
+        color: Theme.of(context).iconTheme.color,
       ),
-      suffixIcon: const Icon(Icons.tune_outlined),
+      suffixIcon: Icon(
+        Icons.tune_outlined,
+        color: Theme.of(context).iconTheme.color,
+      ),
     );
   }
 }

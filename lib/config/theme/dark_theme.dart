@@ -17,6 +17,7 @@ ThemeData darkTheme = ThemeData(
     checkColor: MaterialStatePropertyAll(NeutralColors.black),
     side: BorderSide(color: NeutralColors.white),
   ),
+  dialogBackgroundColor: NeutralColors.lightBlack,
   textTheme: const TextTheme(
     displayLarge: TextStyle(),
     displayMedium: TextStyle(),
@@ -30,16 +31,23 @@ ThemeData darkTheme = ThemeData(
     ),
     headlineMedium: TextStyle(),
     headlineSmall: TextStyle(),
-    titleLarge: TextStyle(),
+    titleLarge: TextStyle(
+      color: NeutralColors.white,
+    ),
     titleMedium: TextStyle(
       color: NeutralColors.white,
     ),
     titleSmall: TextStyle(),
-    bodyLarge: TextStyle(),
+    bodyLarge: TextStyle(
+      color: NeutralColors.white,
+    ),
     bodyMedium: TextStyle(
       color: NeutralColors.white,
     ),
-    bodySmall: TextStyle(),
+    bodySmall: TextStyle(
+      color: NeutralColors.grey600,
+
+    ),
     labelLarge: TextStyle(),
     labelMedium: TextStyle(),
     labelSmall: TextStyle(),

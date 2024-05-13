@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/config/theme/theme_manager.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 
 class LocationFreePremiumButton extends StatefulWidget {
@@ -17,7 +18,9 @@ class LocationFreePremiumButtonState extends State<LocationFreePremiumButton> {
       padding: const EdgeInsets.all(10),
       margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
       decoration: BoxDecoration(
-        color: NeutralColors.grey200,
+        color: ThemeController.isDarkTheme
+            ? NeutralColors.grey900
+            : NeutralColors.grey200,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
@@ -27,6 +30,10 @@ class LocationFreePremiumButtonState extends State<LocationFreePremiumButton> {
               'Free',
               () => setState(() => isFree = true),
               isFree,
+              ThemeController.isDarkTheme
+                  ? NeutralColors.grey900
+                  : NeutralColors.white,
+              PrimaryColors.primary500,
             ),
           ),
           const SizedBox(width: 10),
@@ -35,6 +42,8 @@ class LocationFreePremiumButtonState extends State<LocationFreePremiumButton> {
               'Premium',
               () => setState(() => isFree = false),
               !isFree,
+              PrimaryColors.primary500,
+              NeutralColors.white,
             ),
           ),
         ],
@@ -42,20 +51,27 @@ class LocationFreePremiumButtonState extends State<LocationFreePremiumButton> {
     );
   }
 
-  Widget buttonItem(String text, Function() onTap, bool isFree) {
+  Widget buttonItem(
+    String text,
+    Function() onTap,
+    bool isFree,
+    Color activeColor,
+    Color activeTextColor,
+  ) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          color: isFree ? NeutralColors.white : null,
+          color: isFree ? activeColor : null,
           borderRadius: BorderRadius.circular(8),
           border: isFree ? Border.all(color: PrimaryColors.primary400) : null,
         ),
         child: Center(
           child: Text(
             text,
-            style: Theme.of(context).textTheme.titleMedium,
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                color: isFree ? activeTextColor : NeutralColors.grey800),
           ),
         ),
       ),

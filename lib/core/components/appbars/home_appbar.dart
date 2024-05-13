@@ -54,12 +54,16 @@ AppBar settingsAppbar(BuildContext context, String title) {
       margin: const EdgeInsets.only(left: 12),
       child: ElevatedButton(
         onPressed: () => AppNavigation.pop(context),
-        style: const ButtonStyle(
-          shape: MaterialStatePropertyAll(CircleBorder()),
-          padding: MaterialStatePropertyAll(EdgeInsets.all(4)),
-          backgroundColor: MaterialStatePropertyAll(NeutralColors.white),
-          iconColor: MaterialStatePropertyAll(PrimaryColors.primary500),
-          elevation: MaterialStatePropertyAll(5),
+        style: ButtonStyle(
+          shape: const MaterialStatePropertyAll(CircleBorder()),
+          padding: const MaterialStatePropertyAll(EdgeInsets.all(4)),
+          backgroundColor: MaterialStatePropertyAll(
+            ThemeController.isDarkTheme
+                ? NeutralColors.grey900
+                : NeutralColors.white,
+          ),
+          iconColor: const MaterialStatePropertyAll(PrimaryColors.primary500),
+          elevation: const MaterialStatePropertyAll(5),
         ),
         child: const Icon(Icons.chevron_left),
       ),

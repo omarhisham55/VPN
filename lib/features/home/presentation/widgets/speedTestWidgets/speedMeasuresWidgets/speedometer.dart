@@ -19,6 +19,7 @@ class Speedometer extends StatelessWidget {
         animate: true,
         gaugeWidth: 24,
         fractionDigits: 1,
+        minMaxTextStyle: Theme.of(context).textTheme.bodySmall!,
         unitOfMeasurementTextStyle: Theme.of(context)
             .textTheme
             .headlineLarge!
