@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vpn_demo/core/components/buttons/filled_button_component.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/strings.dart';
 import 'package:vpn_demo/features/home/presentation/cubit/settings_cubit/settings_cubit.dart';
 import 'package:vpn_demo/features/home/presentation/widgets/settingsWidgets/pin_code_field.dart';
@@ -16,17 +17,15 @@ class PinSecurityComponent extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
+          const TextGlobal(
             SettingsStrings.pinSecurityTitle,
-            style: Theme.of(context)
-                .textTheme
-                .bodyLarge!
-                .copyWith(fontWeight: FontWeight.w700),
+            style: TextSizeState.bodyMedium,
+            fontWeight: FontWeight.w700,
           ),
           const SizedBox(height: 12),
-          Text(
+          const TextGlobal(
             SettingsStrings.pinSecuritySubtitle,
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: TextSizeState.bodyMedium,
             textAlign: TextAlign.center,
           ),
           Expanded(

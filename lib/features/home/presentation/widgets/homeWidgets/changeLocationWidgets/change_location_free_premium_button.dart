@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vpn_demo/config/theme/theme_manager.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 
 class LocationFreePremiumButton extends StatefulWidget {
@@ -68,10 +69,10 @@ class LocationFreePremiumButtonState extends State<LocationFreePremiumButton> {
           border: isFree ? Border.all(color: PrimaryColors.primary400) : null,
         ),
         child: Center(
-          child: Text(
+          child: TextGlobal(
             text,
-            style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                color: isFree ? activeTextColor : NeutralColors.grey800),
+            style: TextSizeState.titleMedium,
+            color: isFree ? activeTextColor : NeutralColors.grey800,
           ),
         ),
       ),

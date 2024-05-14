@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/components/text_fields/defualt_text_field.dart';
 
 class TextFieldLabeled extends StatelessWidget {
@@ -15,9 +16,9 @@ class TextFieldLabeled extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        TextGlobal(
           labelName,
-          style: Theme.of(context).textTheme.titleMedium,
+          style: TextSizeState.titleMedium,
         ),
         const SizedBox(height: 8),
         textField,

@@ -3,6 +3,7 @@ import 'package:vpn_demo/config/routes/auth_routes.dart';
 import 'package:vpn_demo/config/routes/home_routes.dart';
 import 'package:vpn_demo/config/routes/onboarding_routes.dart';
 import 'package:vpn_demo/config/routes/settings_routes.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/strings.dart';
 
 abstract class AbstractRouters {
@@ -22,11 +23,11 @@ class Routes {
 
   Route undefinedRoute() {
     return MaterialPageRoute(
-      builder: (context) => Scaffold(
+      builder: (context) => const Scaffold(
         body: Center(
-          child: Text(
+          child: TextGlobal(
             MainStrings.undefinedRoute,
-            style: Theme.of(context).textTheme.displayMedium,
+            style: TextSizeState.displayMedium,
           ),
         ),
       ),

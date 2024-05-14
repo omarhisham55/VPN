@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:vpn_demo/core/components/buttons/filled_button_component.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/images.dart';
 import 'package:vpn_demo/core/utils/strings.dart';
 
@@ -15,24 +16,20 @@ class TouchIdComponent extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
+          const TextGlobal(
             SettingsStrings.touchIdTitle,
-            style: Theme.of(context)
-                .textTheme
-                .bodyLarge!
-                .copyWith(fontWeight: FontWeight.w700),
+            fontWeight: FontWeight.w700,
           ),
           const SizedBox(height: 12),
-          Text(
+          const TextGlobal(
             SettingsStrings.touchIdSubtitle,
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: TextSizeState.bodyMedium,
             textAlign: TextAlign.center,
           ),
           Lottie.asset(SettingsImages.fingerId),
-          Expanded(
-            child: Text(
+          const Expanded(
+            child: TextGlobal(
               SettingsStrings.touchIdTip,
-              style: Theme.of(context).textTheme.bodyLarge,
               textAlign: TextAlign.center,
             ),
           ),

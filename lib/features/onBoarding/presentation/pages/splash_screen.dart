@@ -8,6 +8,7 @@ import 'package:vpn_demo/config/routes/home_routes.dart';
 import 'package:vpn_demo/config/routes/onboarding_routes.dart';
 import 'package:vpn_demo/config/sharedPreferences/functions/shared_prefs_auth_func.dart';
 import 'package:vpn_demo/config/sharedPreferences/functions/shared_prefs_onboarding_func.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/constants/navigation_constants.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/core/utils/images.dart';
@@ -90,27 +91,24 @@ class _SplashScreenState extends State<SplashScreen>
                         child: Lottie.asset(
                           OnBoardingImages.onBoardingStart,
                           errorBuilder: (context, error, stackTrace) {
-                            return const Text('img error');
+                            return const TextGlobal('img error');
                           },
                         ),
                       ),
-                      Text(
+                      const TextGlobal(
                         OnBoardingStrings.startTitle,
-                        style: Theme.of(context).textTheme.headlineLarge,
+                        style: TextSizeState.headlineLarge,
                       ),
                       const Expanded(
-                        child: Text(
+                        child: TextGlobal(
                           OnBoardingStrings.version,
-                          style: TextStyle(color: NeutralColors.white),
+                          color: NeutralColors.white,
                         ),
                       ),
-                      Text(
+                      const TextGlobal(
                         OnBoardingStrings.startQuote,
                         textAlign: TextAlign.center,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyLarge!
-                            .copyWith(color: NeutralColors.white),
+                        color: NeutralColors.white,
                       ),
                       const SizedBox(height: 16),
                       const LinearProgressIndicator(),

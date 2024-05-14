@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/strings.dart';
 import 'package:vpn_demo/features/home/presentation/widgets/homeWidgets/changeLocationWidgets/change_location_free_premium_button.dart';
 import 'package:vpn_demo/features/home/presentation/widgets/homeWidgets/changeLocationWidgets/location_item.dart';
@@ -9,17 +10,17 @@ class ChangeLocationPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 26),
+    return const Padding(
+      padding: EdgeInsets.only(top: 26),
       child: Column(
         children: [
-          Text(
+          TextGlobal(
             MainStrings.changeLocation,
-            style: Theme.of(context).textTheme.titleLarge,
+            style: TextSizeState.titleLarge,
           ),
-          const LocationFreePremiumButton(),
-          const SearchBarLoaction(),
-          const LocationsList(),
+          LocationFreePremiumButton(),
+          SearchBarLoaction(),
+          LocationsList(),
         ],
       ),
     );

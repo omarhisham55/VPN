@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vpn_demo/config/theme/theme_manager.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/constants/dialogs.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 
@@ -19,18 +20,18 @@ class HistoryItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Expanded(
+          const Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                TextGlobal(
                   'London - United Kingdom',
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: TextSizeState.bodyMedium,
                 ),
-                const SizedBox(height: 12),
-                Text(
+                SizedBox(height: 12),
+                TextGlobal(
                   '12:00 18/03/2024 - 20:00 28/.3/2024',
-                  style: Theme.of(context).textTheme.bodySmall,
+                  style: TextSizeState.bodySmall,
                 ),
               ],
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 
 class ConnectedInfoItem extends StatelessWidget {
@@ -25,10 +26,10 @@ class ConnectedInfoItem extends StatelessWidget {
             color: NeutralColors.white,
           ),
           const SizedBox(width: 12),
-          Text(
+          TextGlobal(
             text,
-            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                color: NeutralColors.white, fontWeight: FontWeight.w600),
+            color: NeutralColors.white,
+            fontWeight: FontWeight.w600,
           ),
         ],
       ),

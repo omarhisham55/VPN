@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vpn_demo/config/theme/theme_manager.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 
 class TestInfo extends StatelessWidget {
@@ -12,28 +13,26 @@ class TestInfo extends StatelessWidget {
         Row(
           children: [
             _testItem(
-              child: Row(
+              child: const Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.file_download_outlined,
                     color: SecondaryColors.secondary400,
                   ),
-                  const SizedBox(width: 8),
+                  SizedBox(width: 8),
                   Column(
                     children: [
-                      Text(
+                      TextGlobal(
                         'Download',
-                        style: Theme.of(context).textTheme.titleMedium,
+                        style: TextSizeState.titleMedium,
                       ),
-                      const SizedBox(height: 14),
-                      Text(
+                      SizedBox(height: 14),
+                      TextGlobal(
                         '---',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium!
-                            .copyWith(color: PrimaryColors.primary500),
+                        style: TextSizeState.titleMedium,
+                        color: PrimaryColors.primary500,
                       ),
                     ],
                   ),
@@ -41,28 +40,26 @@ class TestInfo extends StatelessWidget {
               ),
             ),
             _testItem(
-              child: Row(
+              child: const Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.file_upload_outlined,
                     color: SecondaryColors.secondary400,
                   ),
-                  const SizedBox(width: 8),
+                  SizedBox(width: 8),
                   Column(
                     children: [
-                      Text(
+                      TextGlobal(
                         'Upload',
-                        style: Theme.of(context).textTheme.titleMedium,
+                        style: TextSizeState.titleMedium,
                       ),
-                      const SizedBox(height: 14),
-                      Text(
+                      SizedBox(height: 14),
+                      TextGlobal(
                         '---',
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium!
-                            .copyWith(color: PrimaryColors.primary500),
+                        style: TextSizeState.titleMedium,
+                        color: PrimaryColors.primary500,
                       ),
                     ],
                   ),
@@ -74,47 +71,47 @@ class TestInfo extends StatelessWidget {
         Row(
           children: [
             _testItem(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 12),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
                       children: [
-                        Text(
+                        TextGlobal(
                           'Ping',
-                          style: Theme.of(context).textTheme.bodyMedium,
+                          style: TextSizeState.bodyMedium,
                         ),
-                        const SizedBox(height: 14),
-                        Text(
+                        SizedBox(height: 14),
+                        TextGlobal(
                           '--',
-                          style: Theme.of(context).textTheme.bodyMedium,
+                          style: TextSizeState.bodyMedium,
                         ),
                       ],
                     ),
                     Column(
                       children: [
-                        Text(
+                        TextGlobal(
                           'Jitter',
-                          style: Theme.of(context).textTheme.bodyMedium,
+                          style: TextSizeState.bodyMedium,
                         ),
-                        const SizedBox(height: 14),
-                        Text(
+                        SizedBox(height: 14),
+                        TextGlobal(
                           '--',
-                          style: Theme.of(context).textTheme.bodyMedium,
+                          style: TextSizeState.bodyMedium,
                         ),
                       ],
                     ),
                     Column(
                       children: [
-                        Text(
+                        TextGlobal(
                           'Loss',
-                          style: Theme.of(context).textTheme.bodyMedium,
+                          style: TextSizeState.bodyMedium,
                         ),
-                        const SizedBox(height: 14),
-                        Text(
+                        SizedBox(height: 14),
+                        TextGlobal(
                           '--',
-                          style: Theme.of(context).textTheme.bodyMedium,
+                          style: TextSizeState.bodyMedium,
                         ),
                       ],
                     ),

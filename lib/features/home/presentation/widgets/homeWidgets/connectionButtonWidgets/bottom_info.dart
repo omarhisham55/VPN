@@ -1,5 +1,6 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/core/utils/strings.dart';
 import 'package:vpn_demo/features/home/presentation/cubit/home_cubit/home_cubit.dart';
@@ -39,14 +40,13 @@ class BottomConnectionInfo extends StatelessWidget {
   }
 
   Widget notConnectedInfo(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 46),
-      child: Text(
+    return const Padding(
+      padding: EdgeInsets.only(bottom: 46),
+      child: TextGlobal(
         MainStrings.tapToConnect,
-        style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-              color: NeutralColors.white,
-              fontWeight: FontWeight.w600,
-            ),
+        style: TextSizeState.headlineMedium,
+        color: NeutralColors.white,
+        fontWeight: FontWeight.w600,
       ),
     );
   }

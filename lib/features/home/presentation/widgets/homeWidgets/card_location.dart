@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vpn_demo/config/theme/theme_manager.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/core/utils/strings.dart';
 
@@ -29,20 +30,18 @@ class CardLocation extends StatelessWidget {
               color: Theme.of(context).iconTheme.color,
             ),
           ),
-          Expanded(
+          const Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                TextGlobal(
                   MainStrings.bestLoction,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium!
-                      .copyWith(color: PrimaryColors.primary500),
+                  style: TextSizeState.bodyMedium,
+                  color: PrimaryColors.primary500,
                 ),
-                Text(
+                TextGlobal(
                   MainStrings.fastestServer,
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: TextSizeState.bodyMedium,
                 ),
               ],
             ),

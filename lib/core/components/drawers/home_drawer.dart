@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vpn_demo/core/components/buttons/premium_button.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/core/utils/images.dart';
 import 'package:vpn_demo/core/utils/strings.dart';
@@ -97,19 +98,15 @@ class MainDrawer extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const TextGlobal(
                   'Hello,',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium!
-                      .copyWith(color: NeutralColors.white),
+                  style: TextSizeState.bodyMedium,
+                  color: NeutralColors.white,
                 ),
-                Text(
+                const TextGlobal(
                   'Thomas K. Wilson',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium!
-                      .copyWith(color: NeutralColors.white),
+                  style: TextSizeState.bodyMedium,
+                  color: NeutralColors.white,
                 ),
                 const SizedBox(height: 16),
                 ...DrawerStrings.drawerList.entries.map(
@@ -143,12 +140,10 @@ class MainDrawer extends StatelessWidget {
                             const SizedBox(width: 10),
                             Expanded(
                               flex: 3,
-                              child: Text(
+                              child: TextGlobal(
                                 e.value[0],
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge!
-                                    .copyWith(color: NeutralColors.white),
+                                style: TextSizeState.bodyLarge,
+                                color: NeutralColors.white,
                               ),
                             ),
                           ],

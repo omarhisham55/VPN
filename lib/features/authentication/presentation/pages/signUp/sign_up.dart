@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vpn_demo/config/routes/auth_routes.dart';
 import 'package:vpn_demo/core/components/buttons/filled_button_component.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/constants/navigation_constants.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/features/authentication/presentation/cubit/authentication_cubit.dart';
@@ -21,9 +22,9 @@ class SignUp extends StatelessWidget {
           margin: const EdgeInsets.only(top: 40),
           child: Column(
             children: [
-              Text(
+              const TextGlobal(
                 'Sign Up',
-                style: Theme.of(context).textTheme.displaySmall,
+                style: TextSizeState.displaySmall,
               ),
               SignUpForm(auth: auth),
               Row(
@@ -38,30 +39,26 @@ class SignUp extends StatelessWidget {
                       );
                     },
                   ),
-                  Expanded(
+                  const Expanded(
                     child: Wrap(
                       children: [
-                        Text(
+                        TextGlobal(
                           'I Agree with ',
-                          style: Theme.of(context).textTheme.bodyMedium,
+                          style: TextSizeState.bodyMedium,
                         ),
-                        Text(
+                        TextGlobal(
                           'Terms of Service ',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .copyWith(color: PrimaryColors.primary400),
+                          style: TextSizeState.bodyMedium,
+                          color: PrimaryColors.primary400,
                         ),
-                        Text(
+                        TextGlobal(
                           'and ',
-                          style: Theme.of(context).textTheme.bodyMedium,
+                          style: TextSizeState.bodyMedium,
                         ),
-                        Text(
+                        TextGlobal(
                           'Privacy Policy',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .copyWith(color: PrimaryColors.primary400),
+                          style: TextSizeState.bodyMedium,
+                          color: PrimaryColors.primary400,
                         ),
                       ],
                     ),
@@ -80,21 +77,20 @@ class SignUp extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const TextGlobal(
                     'Have an account? ',
-                    style: Theme.of(context).textTheme.bodyMedium,
+                    style: TextSizeState.bodyMedium,
                   ),
                   GestureDetector(
                     onTap: () => AppNavigation.push(
                       context,
                       AuthenticationRoutes.signIn,
                     ),
-                    child: Text(
+                    child: const TextGlobal(
                       'Sign in',
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                            color: PrimaryColors.primary400,
-                            fontWeight: FontWeight.bold,
-                          ),
+                      style: TextSizeState.bodyMedium,
+                      color: PrimaryColors.primary400,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],

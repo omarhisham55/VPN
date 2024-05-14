@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/constants/snack_bars.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 
@@ -49,9 +50,9 @@ class _ResendCodeState extends State<ResendCode> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const TextGlobal(
                 'Didn\'t receive code?',
-                style: Theme.of(context).textTheme.bodyMedium,
+                style: TextSizeState.bodyMedium,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12),
@@ -59,10 +60,7 @@ class _ResendCodeState extends State<ResendCode> {
                   children: [
                     const Icon(Icons.access_time),
                     const SizedBox(width: 8),
-                    Text(
-                      '$_secondsRemaining',
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
+                    TextGlobal('$_secondsRemaining'),
                   ],
                 ),
               ),
@@ -78,13 +76,12 @@ class _ResendCodeState extends State<ResendCode> {
                     );
                   });
                 },
-                child: Text(
+                child: TextGlobal(
                   'Resend Code',
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        color: _secondsRemaining > 0
-                            ? NeutralColors.grey500
-                            : PrimaryColors.primary500,
-                      ),
+                  style: TextSizeState.bodyMedium,
+                  color: _secondsRemaining > 0
+                      ? NeutralColors.grey500
+                      : PrimaryColors.primary500,
                 ),
               )
             ],

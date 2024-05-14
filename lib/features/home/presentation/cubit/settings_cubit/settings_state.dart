@@ -10,10 +10,10 @@ abstract class SettingsState extends Equatable {
 class SettingsInitial extends SettingsState {}
 
 class SwitchState extends SettingsState {
-  final bool state;
-  final String title;
+  final bool? state;
+  final String? title;
 
-  const SwitchState({required this.title, required this.state});
+  const SwitchState({this.title, this.state});
   @override
-  List<Object> get props => [title, state];
+  List<Object?> get props => [title, state];
 }

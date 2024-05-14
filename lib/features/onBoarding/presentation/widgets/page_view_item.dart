@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 
 class PageViewItem extends StatelessWidget {
@@ -23,7 +24,7 @@ class PageViewItem extends StatelessWidget {
             child: Image.asset(
               image,
               errorBuilder: (context, error, stackTrace) {
-                return const Text('img error');
+                return const TextGlobal('img error');
               },
             ),
           ),
@@ -31,19 +32,15 @@ class PageViewItem extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                TextGlobal(
                   title,
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleMedium!
-                      .copyWith(color: PrimaryColors.primary500),
+                  style: TextSizeState.titleMedium,
+                  color: PrimaryColors.primary500,
                 ),
-                Text(
+                TextGlobal(
                   subtitle,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyLarge!
-                      .copyWith(color: PrimaryColors.primary400),
+                  style: TextSizeState.bodyLarge,
+                  color: PrimaryColors.primary400,
                   textAlign: TextAlign.center,
                 ),
               ],

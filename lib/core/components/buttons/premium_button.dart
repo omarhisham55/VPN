@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 
 class PremiumButton extends StatelessWidget {
@@ -41,12 +42,10 @@ class PremiumButton extends StatelessWidget {
           children: [
             icon,
             const SizedBox(width: 8),
-            Text(
+            TextGlobal(
               text,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium!
-                  .copyWith(color: textColor ?? PrimaryColors.primary500),
+              style: TextSizeState.titleMedium,
+              color: textColor ?? PrimaryColors.primary500,
             ),
           ],
         ),

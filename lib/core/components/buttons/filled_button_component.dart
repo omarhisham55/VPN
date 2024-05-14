@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 
 class DefualtAppButton extends StatelessWidget {
@@ -36,12 +37,10 @@ class DefualtAppButton extends StatelessWidget {
             onPressed: value ? null : onPressed,
             disabledColor: NeutralColors.grey500,
             disabledTextColor: NeutralColors.white,
-            child: Text(
+            child: TextGlobal(
               text,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleMedium!
-                  .copyWith(color: NeutralColors.white),
+              style: TextSizeState.titleMedium,
+              color: NeutralColors.white,
             ),
           ),
         );

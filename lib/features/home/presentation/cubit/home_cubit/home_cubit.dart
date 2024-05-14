@@ -122,7 +122,6 @@ class HomeCubit extends Cubit<HomeState> {
         )..addStatusListener((status) {
             if (!isConnected) {
               waveCircleSizes[index] = 0;
-
               animationController.stop();
               emit(WaveAnimationConnectButtonState(
                   animationController: animationController));
@@ -131,8 +130,11 @@ class HomeCubit extends Cubit<HomeState> {
               if (index == 5) {
                 Future.delayed(const Duration(seconds: 1), () {
                   waveCircleSizes[index] = 0;
-                  emit(WaveAnimationConnectButtonState(
-                      animationController: animationController));
+                  emit(
+                    WaveAnimationConnectButtonState(
+                      animationController: animationController,
+                    ),
+                  );
                 });
               } else {
                 animationController.repeat();

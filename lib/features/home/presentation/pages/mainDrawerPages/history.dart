@@ -1,6 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:vpn_demo/core/components/appbars/home_appbar.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/core/utils/images.dart';
 import 'package:vpn_demo/features/home/presentation/cubit/home_cubit/home_cubit.dart';
@@ -29,12 +30,11 @@ class HistoryWidgets {
             width: 160,
           ),
           const SizedBox(height: 16),
-          Text(
+          const TextGlobal(
             'Empty History',
-            style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                  color: PrimaryColors.primary400,
-                  fontWeight: FontWeight.bold,
-                ),
+            style: TextSizeState.headlineMedium,
+            color: PrimaryColors.primary400,
+            fontWeight: FontWeight.bold,
           ),
         ],
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vpn_demo/config/routes/home_routes.dart';
 import 'package:vpn_demo/core/components/buttons/filled_button_component.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/constants/navigation_constants.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/features/authentication/presentation/cubit/authentication_cubit.dart';
@@ -19,15 +20,15 @@ class RegisterVerification extends StatelessWidget {
         padding: const EdgeInsets.all(24),
         child: Column(
           children: [
-            Text(
+            const TextGlobal(
               'Verification',
-              style: Theme.of(context).textTheme.displaySmall,
+              style: TextSizeState.displaySmall,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: Text(
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 16),
+              child: TextGlobal(
                 'Enter the verification code we send you on: email*******@gmail.com',
-                style: Theme.of(context).textTheme.bodyMedium,
+                style: TextSizeState.bodyMedium,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -44,18 +45,17 @@ class RegisterVerification extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const TextGlobal(
                   'Back to ',
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: TextSizeState.bodyMedium,
                 ),
                 GestureDetector(
                   onTap: () => AppNavigation.pop(context),
-                  child: Text(
+                  child: const TextGlobal(
                     'Sign Up',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: PrimaryColors.primary400,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    style: TextSizeState.bodyMedium,
+                    color: PrimaryColors.primary400,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],

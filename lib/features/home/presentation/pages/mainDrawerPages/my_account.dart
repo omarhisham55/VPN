@@ -4,6 +4,7 @@ import 'package:vpn_demo/core/components/appbars/home_appbar.dart';
 import 'package:vpn_demo/core/components/buttons/premium_button.dart';
 import 'package:vpn_demo/core/components/buttons/rounded_appbar_button.dart';
 import 'package:vpn_demo/core/components/panel_header.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/core/utils/images.dart';
 import 'package:vpn_demo/features/home/presentation/cubit/home_cubit/home_cubit.dart';
@@ -74,23 +75,18 @@ class MyAccountWidgets {
         color: PrimaryColors.primary500,
         borderRadius: BorderRadius.circular(12),
       ),
-      child: Column(
+      child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          TextGlobal(
             'username',
-            style: Theme.of(context)
-                .textTheme
-                .bodyLarge!
-                .copyWith(color: NeutralColors.white),
+            color: NeutralColors.white,
           ),
-          const SizedBox(height: 8),
-          Text(
+          SizedBox(height: 8),
+          TextGlobal(
             'email',
-            style: Theme.of(context)
-                .textTheme
-                .bodyMedium!
-                .copyWith(color: NeutralColors.white),
+            style: TextSizeState.bodyMedium,
+            color: NeutralColors.white,
           ),
         ],
       ),
@@ -107,22 +103,22 @@ class MyAccountWidgets {
             : NeutralColors.white,
         borderRadius: BorderRadius.circular(12),
       ),
-      child: Column(
+      child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          TextGlobal(
             'My ID  :  AH_28912',
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: TextSizeState.bodyMedium,
           ),
-          const SizedBox(height: 12),
-          Text(
+          SizedBox(height: 12),
+          TextGlobal(
             'My IP  :  116.108.85.23',
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: TextSizeState.bodyMedium,
           ),
-          const SizedBox(height: 12),
-          Text(
+          SizedBox(height: 12),
+          TextGlobal(
             'Type  :  Free',
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: TextSizeState.bodyMedium,
           ),
         ],
       ),
@@ -142,47 +138,41 @@ class MyAccountWidgets {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
+          const Row(
             children: [
               Expanded(
-                child: Text(
+                child: TextGlobal(
                   'Devices',
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: PrimaryColors.primary600),
+                  style: TextSizeState.bodyMedium,
+                  fontWeight: FontWeight.bold,
+                  color: PrimaryColors.primary600,
                 ),
               ),
-              Text(
+              TextGlobal(
                 '6/10',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium!
-                    .copyWith(color: PrimaryColors.primary600),
+                style: TextSizeState.bodyMedium,
+                color: PrimaryColors.primary600,
               ),
             ],
           ),
           const Divider(),
           ...List.generate(
             4,
-            (index) => Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5),
+            (index) => const Padding(
+              padding: EdgeInsets.symmetric(vertical: 5),
               child: Row(
                 children: [
                   Expanded(
-                    child: Text(
+                    child: TextGlobal(
                       'iphone 15 pro',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium!
-                          .copyWith(color: PrimaryColors.primary600),
+                      style: TextSizeState.bodyMedium,
+                      color: PrimaryColors.primary600,
                     ),
                   ),
-                  Text(
+                  TextGlobal(
                     'Connected',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium!
-                        .copyWith(color: NeutralColors.green),
+                    style: TextSizeState.bodyMedium,
+                    color: NeutralColors.green,
                   ),
                 ],
               ),

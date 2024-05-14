@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vpn_demo/config/theme/theme_manager.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 
 class DropDownSetting<String> extends StatefulWidget {
@@ -33,9 +34,9 @@ class _DropDownSettingState<String> extends State<DropDownSetting<String>> {
       items: widget.items
           .map((item) => DropdownMenuItem<String>(
                 value: item,
-                child: Text(
+                child: TextGlobal(
                   item.toString(),
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: TextSizeState.bodyMedium,
                 ),
               ))
           .toList(),

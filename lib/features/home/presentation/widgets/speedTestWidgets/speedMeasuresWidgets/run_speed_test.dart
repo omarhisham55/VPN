@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vpn_demo/core/components/buttons/filled_button_component.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/features/home/presentation/cubit/home_cubit/home_cubit.dart';
 
@@ -65,14 +66,12 @@ class RunSpeedTest extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 12, bottom: 24),
-              child: Text(
+            const Padding(
+              padding: EdgeInsets.only(top: 12, bottom: 24),
+              child: TextGlobal(
                 'Your IP : 51.77.108.159',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge!
-                    .copyWith(color: PrimaryColors.primary500),
+                style: TextSizeState.titleLarge,
+                color: PrimaryColors.primary500,
               ),
             ),
             DefualtAppButton(

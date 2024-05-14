@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vpn_demo/config/routes/auth_routes.dart';
 import 'package:vpn_demo/core/components/buttons/filled_button_component.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/constants/navigation_constants.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/features/authentication/presentation/cubit/authentication_cubit.dart';
@@ -22,9 +23,9 @@ class Login extends StatelessWidget {
         padding: const EdgeInsets.all(24),
         child: Column(
           children: [
-            Text(
+            const TextGlobal(
               'Sign In',
-              style: Theme.of(context).textTheme.displaySmall,
+              style: TextSizeState.displaySmall,
             ),
             LoginForm(auth: auth),
             Expanded(
@@ -35,12 +36,10 @@ class Login extends StatelessWidget {
                   GestureDetector(
                     onTap: () => AppNavigation.push(
                         context, AuthenticationRoutes.forgetPassword),
-                    child: Text(
+                    child: const TextGlobal(
                       'Forgot Password?',
-                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                            color: PrimaryColors.primary500,
-                            fontWeight: FontWeight.w500,
-                          ),
+                      color: PrimaryColors.primary500,
+                      fontWeight: FontWeight.w500,
                     ),
                   )
                 ],
@@ -58,18 +57,17 @@ class Login extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const TextGlobal(
                   'Dont\'t have an account? ',
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: TextSizeState.bodyMedium,
                 ),
                 GestureDetector(
                   onTap: () => AppNavigation.pop(context),
-                  child: Text(
+                  child: const TextGlobal(
                     'Sign Up',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: PrimaryColors.primary400,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    style: TextSizeState.bodyMedium,
+                    color: PrimaryColors.primary400,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],

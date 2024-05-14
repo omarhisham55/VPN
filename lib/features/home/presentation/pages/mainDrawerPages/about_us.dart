@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:vpn_demo/core/components/appbars/home_appbar.dart';
 import 'package:vpn_demo/core/components/buttons/rounded_appbar_button.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/core/utils/images.dart';
 
@@ -27,13 +28,11 @@ class AboutUsWidgets {
           children: [
             Column(
               children: [
-                Text(
+                const TextGlobal(
                   'We provide many services on many platforms.',
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                        color: PrimaryColors.primary400,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  color: PrimaryColors.primary400,
+                  fontWeight: FontWeight.bold,
                 ),
                 const SizedBox(height: 28),
                 GridView.count(

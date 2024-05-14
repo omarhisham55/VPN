@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/strings.dart';
 
 class FaceScanManager {
@@ -73,12 +74,11 @@ class _FaceScanDetectionState extends State<FaceScanDetection> {
           return Column(
             children: [
               if (widget.isSupported)
-                const Text('supported')
+                const TextGlobal('supported')
               else
-                const Text('not supported'),
-              Text(
+                const TextGlobal('not supported'),
+              const TextGlobal(
                 SettingsStrings.faceIdTip,
-                style: Theme.of(context).textTheme.bodyLarge,
                 textAlign: TextAlign.center,
               ),
             ],

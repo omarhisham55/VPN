@@ -4,6 +4,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 
 part 'network_controller_state.dart';
@@ -19,9 +20,10 @@ class NetworkController extends Cubit<InternetStatus> {
   void _updateConnectivityStatus(ConnectivityResult connectivityResult) {
     if (connectivityResult == ConnectivityResult.none) {
       Get.rawSnackbar(
-        messageText: const Text(
+        messageText: const TextGlobal(
           'PLEASE CONNECT TO THE INTERNET',
-          style: TextStyle(color: NeutralColors.white, fontSize: 14),
+          style: TextSizeState.titleMedium,
+          color: NeutralColors.white,
         ),
         isDismissible: false,
         duration: const Duration(days: 1),

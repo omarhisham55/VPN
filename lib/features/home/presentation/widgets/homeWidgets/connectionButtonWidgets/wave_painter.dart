@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,80 +21,14 @@ class CircularAudioWave extends StatefulWidget {
 
   @override
   CircularAudioWaveState createState() => CircularAudioWaveState();
-  static startWaveAnimation() => CircularAudioWaveState().startWaveAnimation();
 }
 
 class CircularAudioWaveState extends State<CircularAudioWave>
     with TickerProviderStateMixin {
-  List<AnimationController> waveAnimationControllers = [];
-  List<Animation<double>> waveAnimations = [];
-  List<double> waveCircleSizes = [];
-
   @override
   void initState() {
     super.initState();
-    startWaveAnimation();
-  }
-
-  void startWaveAnimation() {
-    void animateCircle(int index) {
-      if (mounted) {
-        late final AnimationController animationController;
-        animationController = AnimationController(
-          vsync: this,
-          duration: const Duration(milliseconds: 3000),
-        )..addStatusListener((status) {
-            if (!widget.manager.isConnected) {
-              setState(() {});
-              waveCircleSizes[index] = 0;
-              animationController.stop();
-            }
-            if (status == AnimationStatus.completed) {
-              if (index == 5) {
-                setState(() {});
-                Future.delayed(const Duration(seconds: 1), () {
-                  waveCircleSizes[index] = 0;
-                });
-              } else {
-                animationController.repeat();
-              }
-            }
-          });
-
-        late final Animation<double> animation;
-        animation = Tween<double>(begin: 0, end: 1).animate(animationController)
-          ..addListener(() {
-            setState(() {});
-            waveCircleSizes[index] = animation.value;
-          });
-
-        waveAnimationControllers.add(animationController);
-        waveAnimations.add(animation);
-
-        animationController.forward();
-      }
-    }
-
-    for (int i = 0; i < 5; i++) {
-      Timer(Duration(milliseconds: 600 * i), () {
-        waveCircleSizes.add(0);
-        animateCircle(i);
-      });
-    }
-  }
-
-  @override
-  void dispose() {
-    for (var controller in waveAnimationControllers) {
-      controller.stop();
-      controller.removeStatusListener((status) {});
-    }
-    for (var controller in waveAnimations) {
-      controller.removeStatusListener((status) {});
-    }
-    waveCircleSizes = [];
-
-    super.dispose();
+    widget.manager.startWaveAnimation(this, mounted);
   }
 
   @override
@@ -104,9 +37,9 @@ class CircularAudioWaveState extends State<CircularAudioWave>
       builder: (context, state) {
         return Stack(
           children: List.generate(
-            waveCircleSizes.length,
+            widget.manager.waveCircleSizes.length,
             (index) => CircularWave(
-              circleSize: waveCircleSizes[index],
+              circleSize: widget.manager.waveCircleSizes[index],
               height: widget.height,
               width: widget.width,
               color: widget.color,

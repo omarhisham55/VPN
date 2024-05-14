@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 
 class DefualtOutlinedAppButton extends StatelessWidget {
@@ -29,12 +30,10 @@ class DefualtOutlinedAppButton extends StatelessWidget {
           borderSide: const BorderSide(color: NeutralColors.grey500),
         ),
         onPressed: onPressed,
-        child: Text(
+        child: TextGlobal(
           text,
-          style: Theme.of(context)
-              .textTheme
-              .titleMedium!
-              .copyWith(color: PrimaryColors.primary500),
+          style: TextSizeState.titleMedium,
+          color: PrimaryColors.primary500,
         ),
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vpn_demo/config/theme/theme_manager.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/constants/navigation_constants.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/core/utils/images.dart';
@@ -38,12 +39,11 @@ AppBar homeAppbar({
               fit: BoxFit.fill,
               height: 60,
             )
-          : Text(
+          : TextGlobal(
               title,
-              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                    color: PrimaryColors.primary400,
-                    fontWeight: FontWeight.bold,
-                  ),
+              style: TextSizeState.headlineMedium,
+              color: PrimaryColors.primary400,
+              fontWeight: FontWeight.bold,
             ),
       actions: [action ?? Container()],
     );
@@ -68,12 +68,11 @@ AppBar settingsAppbar(BuildContext context, String title) {
         child: const Icon(Icons.chevron_left),
       ),
     ),
-    title: Text(
+    title: TextGlobal(
       title,
-      style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-            color: PrimaryColors.primary400,
-            fontWeight: FontWeight.bold,
-          ),
+      style: TextSizeState.headlineMedium,
+      color: PrimaryColors.primary400,
+      fontWeight: FontWeight.bold,
     ),
     centerTitle: true,
   );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vpn_demo/core/components/buttons/filled_button_component.dart';
 import 'package:vpn_demo/core/components/buttons/outlined_button_component.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/constants/navigation_constants.dart';
 import 'package:vpn_demo/core/utils/strings.dart';
 
@@ -16,21 +17,18 @@ class AppDialogs {
             children: [
               Stack(
                 children: [
-                  Align(
+                  const Align(
                     alignment: Alignment.bottomCenter,
                     child: Padding(
-                      padding: const EdgeInsets.only(
+                      padding: EdgeInsets.only(
                         top: 20,
                         left: 16,
                         right: 16,
                       ),
-                      child: Text(
+                      child: TextGlobal(
                         MainStrings.disconnectDialogContent,
                         textAlign: TextAlign.center,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyLarge!
-                            .copyWith(fontWeight: FontWeight.w600),
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
@@ -72,21 +70,18 @@ class AppDialogs {
         backgroundColor: Theme.of(context).dialogBackgroundColor,
         title: Stack(
           children: [
-            Align(
+            const Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
-                padding: const EdgeInsets.only(
+                padding: EdgeInsets.only(
                   top: 20,
                   left: 16,
                   right: 16,
                 ),
-                child: Text(
+                child: TextGlobal(
                   MainStrings.disconnectDialogContent,
                   textAlign: TextAlign.center,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyLarge!
-                      .copyWith(fontWeight: FontWeight.w600),
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),

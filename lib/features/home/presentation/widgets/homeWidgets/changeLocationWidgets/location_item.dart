@@ -2,6 +2,7 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vpn_demo/config/theme/theme_manager.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/core/utils/images.dart';
 import 'package:vpn_demo/features/home/domain/entities/vpn_info.dart';
@@ -26,9 +27,9 @@ class LocationsList extends StatelessWidget {
             separatorBuilder: (context, index) => const SizedBox(height: 12),
             itemCount: servers.length,
           ),
-          fallback: (context) => Text(
+          fallback: (context) => const TextGlobal(
             'No Locations Available',
-            style: Theme.of(context).textTheme.titleMedium,
+            style: TextSizeState.titleMedium,
           ),
         );
       },
@@ -52,13 +53,12 @@ class LocationsList extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                TextGlobal(
                   model.countryLongName,
-                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
-                Text(
+                TextGlobal(
                   model.speed.toString(),
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: TextSizeState.bodyMedium,
                 ),
               ],
             ),

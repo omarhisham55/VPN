@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_view_dot_indicator/page_view_dot_indicator.dart';
 import 'package:vpn_demo/core/components/buttons/filled_button_component.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/core/utils/strings.dart';
 import 'package:vpn_demo/features/onBoarding/presentation/cubit/onboarding_cubit.dart';
@@ -48,9 +49,9 @@ class OnBoardingScreen extends StatelessWidget {
                 TextButton(
                   onPressed: () =>
                       OnboardingCubit.get(context).onSkipClick(context),
-                  child: Text(
+                  child: const TextGlobal(
                     'Skip',
-                    style: Theme.of(context).textTheme.titleMedium,
+                    style: TextSizeState.titleMedium,
                   ),
                 )
               ],

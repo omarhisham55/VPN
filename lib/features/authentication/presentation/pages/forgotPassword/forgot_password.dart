@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/components/text_fields/defualt_text_field.dart';
 import 'package:vpn_demo/core/components/buttons/filled_button_component.dart';
 import 'package:vpn_demo/core/constants/navigation_constants.dart';
@@ -19,15 +20,15 @@ class ForgotPassword extends StatelessWidget {
         padding: const EdgeInsets.all(24),
         child: Column(
           children: [
-            Text(
+            const TextGlobal(
               'Forgot Password',
-              style: Theme.of(context).textTheme.displaySmall,
+              style: TextSizeState.displaySmall,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: Text(
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 16),
+              child: TextGlobal(
                 'Enter your email and we will send OTP code to recover the password',
-                style: Theme.of(context).textTheme.bodyMedium,
+                style: TextSizeState.bodyMedium,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -53,18 +54,17 @@ class ForgotPassword extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const TextGlobal(
                   'Back to ',
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: TextSizeState.bodyMedium,
                 ),
                 GestureDetector(
                   onTap: () => AppNavigation.pop(context),
-                  child: Text(
+                  child: const TextGlobal(
                     'Sign in',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: PrimaryColors.primary400,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    style: TextSizeState.bodyMedium,
+                    color: PrimaryColors.primary400,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],

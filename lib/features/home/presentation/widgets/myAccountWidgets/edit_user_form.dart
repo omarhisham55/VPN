@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vpn_demo/core/components/buttons/filled_button_component.dart';
 import 'package:vpn_demo/core/components/buttons/outlined_button_component.dart';
+import 'package:vpn_demo/core/components/text/text_controller.dart';
 import 'package:vpn_demo/core/components/text_fields/defualt_text_field.dart';
 import 'package:vpn_demo/core/components/text_fields/text_field_labeled.dart';
 import 'package:vpn_demo/core/utils/strings.dart';
@@ -18,9 +19,9 @@ class EditUserForm extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
+          const TextGlobal(
             'Change User Information',
-            style: Theme.of(context).textTheme.titleMedium,
+            style: TextSizeState.titleMedium,
           ),
           Container(
             margin: const EdgeInsets.only(top: 10),
