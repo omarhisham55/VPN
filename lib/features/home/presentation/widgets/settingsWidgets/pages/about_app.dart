@@ -10,7 +10,7 @@ class AboutApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: settingsAppbar(context, 'About App'),
+      appBar: extraPageAppbar(context, 'About App'),
       body: Padding(
         padding: const EdgeInsets.all(24),
         child: Column(

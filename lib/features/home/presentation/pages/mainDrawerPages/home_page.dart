@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:vpn_demo/config/routes/home_routes.dart';
 import 'package:vpn_demo/core/components/appbars/home_appbar.dart';
 import 'package:vpn_demo/core/components/buttons/rounded_appbar_button.dart';
 import 'package:vpn_demo/core/components/panel_header.dart';
+import 'package:vpn_demo/core/constants/navigation_constants.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/core/utils/images.dart';
 import 'package:vpn_demo/features/home/presentation/cubit/home_cubit/home_cubit.dart';
@@ -24,7 +26,7 @@ class HomePageWidgets {
             fit: BoxFit.fill,
             height: 50,
           ),
-          onTap: () {},
+          onTap: () => AppNavigation.push(context, HomeRoutes.premium),
           backgroundColor: PrimaryColors.primary500,
         ),
       ),

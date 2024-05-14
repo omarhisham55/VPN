@@ -54,7 +54,7 @@ class SettingsWidgets {
     debugPrint('combinedNotifiers: ${settings.combinedNotifiers}');
     return ValueListenableBuilder<List<bool>>(
       valueListenable: settings.combinedNotifiers,
-      builder: (context, value, child) {
+      builder: (context, valueList, child) {
         return switch (title) {
           'Language' => const DropDownSetting<String>(
               items: ['English', 'Arabic'],
@@ -63,7 +63,7 @@ class SettingsWidgets {
               items: ['IPSec', 'Lan'],
             ),
           'Notification' => Switch.adaptive(
-              value: value[0],
+              value: valueList[0],
               onChanged: settings.toggleNotificationSwitch,
             ),
           'Dark Mode' => ValueListenableBuilder<bool>(
@@ -76,16 +76,16 @@ class SettingsWidgets {
               },
             ),
           'Face ID' => Switch.adaptive(
-              value: value[2],
+              value: valueList[1],
               onChanged: (value) => settings.toggleFaceIdSwitch(context, value),
             ),
           'Touch ID' => Switch.adaptive(
-              value: value[3],
+              value: valueList[2],
               onChanged: (value) =>
                   settings.toggleTouchIdSwitch(context, value),
             ),
           'Pin Security' => Switch.adaptive(
-              value: value[4],
+              value: valueList[3],
               onChanged: (value) =>
                   settings.togglePinSecuritySwitch(context, value),
             ),

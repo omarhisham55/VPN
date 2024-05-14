@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:vpn_demo/config/routes/home_routes.dart';
 import 'package:vpn_demo/core/components/buttons/premium_button.dart';
 import 'package:vpn_demo/core/components/text/text_controller.dart';
+import 'package:vpn_demo/core/constants/navigation_constants.dart';
 import 'package:vpn_demo/core/utils/colors.dart';
 import 'package:vpn_demo/core/utils/images.dart';
 import 'package:vpn_demo/core/utils/strings.dart';
@@ -64,7 +66,8 @@ class _HomeDrawerState extends State<HomeDrawer> with TickerProviderStateMixin {
                   width: double.infinity,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 90, vertical: 30),
-                  onPressed: () {},
+                  onPressed: () =>
+                      AppNavigation.push(context, HomeRoutes.premium),
                 ),
               );
             },

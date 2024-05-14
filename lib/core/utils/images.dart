@@ -19,6 +19,7 @@ class MainImages {
   static const String premiumWhite = '$imgPath/premium_white.png';
   static const String premiumFilled = '$imgPath/premium_filled.png';
   static const String emptyList = '$imgPath/empty_list.png';
+  static const String paymentSuccess = '$imgPath/payment_success.png';
 }
 
 class DrawerImages {

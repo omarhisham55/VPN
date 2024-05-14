@@ -48,8 +48,16 @@ AppBar homeAppbar({
       actions: [action ?? Container()],
     );
 
-AppBar settingsAppbar(BuildContext context, String title) {
+AppBar extraPageAppbar(
+  BuildContext context,
+  String title, {
+  Color? backgroundColor,
+  Color? iconColor,
+  Color? textColor = PrimaryColors.primary400,
+  double? elevation = 0,
+}) {
   return AppBar(
+    backgroundColor: backgroundColor,
     leading: Container(
       margin: const EdgeInsets.only(left: 12),
       child: ElevatedButton(
@@ -58,12 +66,13 @@ AppBar settingsAppbar(BuildContext context, String title) {
           shape: const MaterialStatePropertyAll(CircleBorder()),
           padding: const MaterialStatePropertyAll(EdgeInsets.all(4)),
           backgroundColor: MaterialStatePropertyAll(
-            ThemeController.isDarkTheme
-                ? NeutralColors.grey900
-                : NeutralColors.white,
+            iconColor ??
+                (ThemeController.isDarkTheme
+                    ? NeutralColors.grey900
+                    : NeutralColors.white),
           ),
           iconColor: const MaterialStatePropertyAll(PrimaryColors.primary500),
-          elevation: const MaterialStatePropertyAll(5),
+          elevation: MaterialStatePropertyAll(elevation),
         ),
         child: const Icon(Icons.chevron_left),
       ),
@@ -71,7 +80,7 @@ AppBar settingsAppbar(BuildContext context, String title) {
     title: TextGlobal(
       title,
       style: TextSizeState.headlineMedium,
-      color: PrimaryColors.primary400,
+      color: textColor,
       fontWeight: FontWeight.bold,
     ),
     centerTitle: true,

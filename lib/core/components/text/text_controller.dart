@@ -50,6 +50,7 @@ class TextGlobal extends StatelessWidget {
   final Color? color;
   final FontWeight? fontWeight;
   final TextAlign? textAlign;
+  final double? startSpacing;
   const TextGlobal(
     this.text, {
     super.key,
@@ -57,17 +58,21 @@ class TextGlobal extends StatelessWidget {
     this.color,
     this.fontWeight,
     this.textAlign,
+    this.startSpacing = 0,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: getTextStyle(context, style!).copyWith(
-        color: color,
-        fontWeight: fontWeight,
+    return Padding(
+      padding: EdgeInsets.only(left: startSpacing!),
+      child: Text(
+        text,
+        style: getTextStyle(context, style!).copyWith(
+          color: color,
+          fontWeight: fontWeight,
+        ),
+        textAlign: textAlign,
       ),
-      textAlign: textAlign,
     );
   }
 }
